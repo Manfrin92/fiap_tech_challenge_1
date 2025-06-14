@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import './base.css' layer(base);
+@import './utilities.css';
 
 @theme {
   /* COLORS */
@@ -88,5 +90,3 @@
   }
 }
 
-@import './base.css' layer(base);
-@import './utilities.css';
