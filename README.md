@@ -52,5 +52,10 @@ then, run the development server:
 npm run dev
 ```
 
+to run storybook, please:
+```bash
+npm run storybook
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 result.
