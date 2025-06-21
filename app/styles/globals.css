@@ -1,11 +1,12 @@
 @import "tailwindcss";
 @import './base.css' layer(base);
 @import './utilities.css';
+@import './hamburgers.css';
 
 @theme {
   /* COLORS */
   --color-*: initial;
-  --color-current: currentColor; 
+  --color-current: currentColor;
 
   --color-black: #000000;
   --color-white: #ffffff;
@@ -17,8 +18,8 @@
   --color-gray: #DEE9EA;
   --color-gray-light: #F8F8F8;
   --color-gray-dark: #444444;
-  
-  --color-orange: #FF5031; 
+
+  --color-orange: #FF5031;
 
   /* COLORS - VARIABLES */
   --color-primary: var(--color-green-dark);
