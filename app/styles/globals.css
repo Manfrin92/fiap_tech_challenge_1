@@ -20,6 +20,8 @@
   
   --color-orange: #FF5031; 
 
+  --color-red: #BF1313;
+
   /* COLORS - VARIABLES */
   --color-primary: var(--color-green-dark);
   --color-secondary: var(--color-green-light);
@@ -35,6 +37,7 @@
   --color-input-border: var(--color-green);
   --color-input-placeholder: var(--color-gray);
   --color-input-text: var(--color-gray-dark);
+  --color-input-error: var(--color-red);
 
   /* COLORS - CURRENT */
   --color-current: currentColor;
@@ -64,6 +67,7 @@
   --font-votorantim: var(--font-inter);
 
   /* FONT SIZE */
+  --text-1: 1rem;
   --text-2.5xl: 1.625rem;
   --text-5.5xl: 3.25rem;
   --text-6.5xl: 4rem;
