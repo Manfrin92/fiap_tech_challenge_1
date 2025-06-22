@@ -19,6 +19,8 @@
   --color-gray-dark: #444444;
   
   --color-orange: #FF5031; 
+  
+   --color-error: #BF1313;
 
   /* COLORS - VARIABLES */
   --color-primary: var(--color-green-dark);
