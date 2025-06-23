@@ -7,7 +7,7 @@ export const data = {
     },
     {
       text: 'Serviços',
-      url: '/#serviços',
+      url: '/services',
       blanck: false
     }
   ],
