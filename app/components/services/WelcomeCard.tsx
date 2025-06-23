@@ -1,4 +1,4 @@
-import EyeSvg from "../icons/EyeSvg";
+import Eye from "@/assets/icons/eye.svg";
 
 export default function WelcomeCard() {
   return (
@@ -8,7 +8,7 @@ export default function WelcomeCard() {
       <div className="flex flex-col self-end">
         <div className="flex items-center gap-6">
           <h4 className="font-semibold text-white text-xl">Saldo</h4>
-          <EyeSvg />
+          <Eye className="text-2xl"/>
         </div>
         <hr className="mt-4" style={{ border: "none", height: "2px", backgroundColor: "red", width: "100%" }} />
         <span className="text-white text-base mt-4">Conta corrente</span>
