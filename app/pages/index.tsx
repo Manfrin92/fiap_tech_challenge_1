@@ -1,4 +1,5 @@
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { NextSeo } from "next-seo";
 
 export default function Home() {
   const [valueStorage, setValueStorage, getValueStorage] = useLocalStorage(
@@ -8,6 +9,7 @@ export default function Home() {
 
   return (
     <>
+      <NextSeo title="Bytebank | Homepage" />
       Home
       {/* <h1>{valueStorage}</h1>
           <button className='bg-green-dark text-white mr-3 p-2 mt-3' onClick={() => setValueStorage("You are here again")}>Click me</button>
