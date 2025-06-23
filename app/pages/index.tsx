@@ -1,28 +1,19 @@
-import CustomSelect from "@/components/select/Select"
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { NextSeo } from "next-seo";
 
-interface TransactionSelectorProps {
-  onValueChange?: (value: string) => void
-  defaultValue?: string
-  className?: string
-}
+export default function Home() {
+  const [valueStorage, setValueStorage, getValueStorage] = useLocalStorage(
+    "welcome",
+    "This item was get in Local Storage"
+  );
 
-const transactionOptions = [
-  { value: "receita", label: "Receita" },
-  { value: "despesa", label: "Despesa" },
-  { value: "transferencia", label: "Transferência" },
-  { value: "investimento", label: "Investimento" },
-]
-
-export default function TransactionSelector({ onValueChange, defaultValue, className = "" }: TransactionSelectorProps) {
   return (
-    <div className={`w-full max-w-2xl mx-auto p-8 ${className}`}>
-          <CustomSelect
-              options={transactionOptions}
-              placeholder="Selecione o tipo de transação"
-              onValueChange={onValueChange}
-              borderColor="blue"
-            />
-    </div>
-  )
+    <>
+      <NextSeo title="Bytebank | Homepage" />
+      Home
+      {/* <h1>{valueStorage}</h1>
+          <button className='bg-green-dark text-white mr-3 p-2 mt-3' onClick={() => setValueStorage("You are here again")}>Click me</button>
+          <button className='bg-green-light' onClick={() => alert(getValueStorage())}>Ler direto do localStorage</button> */}
+    </>
+  );
 }
-
