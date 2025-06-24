@@ -4,36 +4,112 @@ import Link from 'next/link'
 import Cta from '@/components/cta'
 import { twMerge } from 'tailwind-merge'
 
+import Avatar from '@/assets/icons/avatar.svg'
+import Close from '@/assets/icons/close.svg'
+
 interface Properties {
   closeMenu: () => void
+  closeProfileMenu: () => void
   data: IMenu | unknown
+  isLoggedIn: boolean
   isMenuActive: boolean
-  isLoggerdIn: boolean
+  isProfileMenuActive: boolean
   logIn: () => void
+  openProfileMenu: () => void
 }
 
-const NavMenu: React.FC<Properties> = ({data, closeMenu, isLoggerdIn, isMenuActive, logIn}) => {
-  const {loggedOutMenu, loginCta, mobileMenu, profileMenu, subscribeCta} = data as unknown as IMenu
+const NavMenu: React.FC<Properties> = ({
+  data,
+  closeMenu,
+  closeProfileMenu,
+  isLoggedIn,
+  isMenuActive,
+  isProfileMenuActive,
+  logIn,
+  openProfileMenu
+}) => {
+  const {
+    loggedOutMenu,
+    loggedInMenu,
+    profileMenu,
+    loginCta,
+    subscribeCta,
+    username
+  } = data as unknown as IMenu
 
   return (
-    <nav className={
-      twMerge(
-        'fixed top-0 left-0 md:static md:bg-transparent w-fit md:w-full px-6 pt-24 pb-6 md:p-0 flex flex-col md:flex-row md:justify-between transition-all duration-300',
-        isMenuActive ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
-        isLoggerdIn ? 'bg-green-dark' : 'bg-black'
-      )}>
-      {isLoggerdIn ? (
-        <span></span>
-      ) : (
+    <>
+      {isLoggedIn ? (
         <>
+          <div className='w-full flex items-center justify-end gap-4'>
+            <span className='hidden md:block'>{username}</span>
+            <button onClick={openProfileMenu}>
+              <Avatar className='w-10 h-10' />
+            </button>
+          </div>
+          <nav className={
+            twMerge(
+              'fixed top-0 left-0 w-fit p-6 pt-10 flex md:hidden flex-col transition-all duration-300 bg-green-light',
+              isMenuActive ? 'translate-x-0' : '-translate-x-full',
+            )}
+          >
+            <button className='absolute top-4 right-4' onClick={closeMenu}>
+              <Close className='w-4 h-4' />
+            </button>
+            <ul className='flex flex-col'>
+              {loggedInMenu.map((loggedInItem, index) => (
+                <li className='py-4 not-last:border-b border-black' key={`item-${index}`}>
+                  <Link
+                    className='block w-full text-lg text-center text-black' href={loggedInItem.url}
+                    onClick={closeMenu}
+                  >
+                    {loggedInItem.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav className={
+            twMerge(
+              'fixed md:absolute top-0 md:top-[6rem] right-0 w-fit p-6 pt-10 flex flex-col transition-all duration-300 bg-black',
+              isProfileMenuActive ? 'translate-x-0 md:translate-y-0 md:opacity-100 md:pointer-events-auto z-20' : 'translate-x-full md:translate-0 md:translate-y-2 md:opacity-0 md:pointer-events-none -z-10',
+            )}
+          >
+            <button className='absolute top-4 right-4' onClick={closeProfileMenu}>
+              <Close className='w-4 h-4' />
+            </button>
+            <ul className='flex flex-col'>
+              {profileMenu.map((profileItem, index) => (
+                <li className='py-4 not-last:border-b border-green' key={`item-${index}`}>
+                  <Link
+                    className='block w-full text-lg text-center text-green' href={profileItem.url}
+                    onClick={closeMenu}
+                  >
+                    {profileItem.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </>
+      ) : (
+        <nav className={
+          twMerge(
+            'fixed top-0 left-0 md:static md:bg-transparent w-fit md:w-full p-6 pt-10 md:p-0 flex flex-col md:flex-row md:justify-between transition-all duration-300 bg-black',
+            isMenuActive ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
+          )}
+        >
+          <button className='md:hidden absolute top-4 right-4' onClick={closeMenu}>
+            <Close className='w-4 h-4' />
+          </button>
           <ul className='flex flex-col md:flex-row md:items-center md:gap-10'>
-            {loggedOutMenu.map((item, index) => (
-              <li key={`item-${index}`}>
+            {loggedOutMenu.map((loggedOutItem, index) => (
+              <li className='py-4 not-last:border-b border-green md:border-none' key={`item-${index}`}>
                 <Link
-                  className='text-lg font-semibold block translate-0 hover:-translate-y-2 duration-200 transition-all' href={item.url}
+                  className='block text-lg w-full md:w-fit text-center md:font-semibold translate-0 hover:-translate-y-2 duration-200 transition-all' href={loggedOutItem.url}
                   onClick={closeMenu}
                 >
-                  {item.text}
+                  {loggedOutItem.text}
                 </Link>
               </li>
             ))}
@@ -42,9 +118,9 @@ const NavMenu: React.FC<Properties> = ({data, closeMenu, isLoggerdIn, isMenuActi
             <Cta {...subscribeCta} />
             <Cta {...loginCta} onClick={logIn} />
           </div>
-        </>
+        </nav>
       )}
-    </nav>
+    </>
   )
 }
 

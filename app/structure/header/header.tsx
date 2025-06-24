@@ -11,18 +11,28 @@ import Hamburger from './hamburger'
 
 export interface IMenu {
   loggedOutMenu: ICommonLink[]
+  loggedInMenu: ICommonLink[]
   loginCta: ICta
   subscribeCta: ICta
   profileMenu: ICommonLink[]
-  mobileMenu: ICommonLink[]
+  username: string
 }
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false)
+  const [isProfileMenuActive, setIsProfileMenuActive] = useState<boolean>(false)
 
   const closeMenu = useCallback(() => {
     setIsMenuActive(false)
+  }, [])
+
+  const openProfileMenu = useCallback(() => {
+    setIsProfileMenuActive(true)
+  }, [])
+
+  const closeProfileMenu = useCallback(() => {
+    setIsProfileMenuActive(false)
   }, [])
 
   const logIn = useCallback(() => {
@@ -31,7 +41,7 @@ const Header = () => {
 
   return (
     <header className={twMerge('sticky top-0 h-24 flex items-center justify-center', isLoggedIn ? 'text-white bg-green-dark' : 'text-green bg-black')}>
-      <div className='container flex items-center justify-between md:gap-14 lg:gap-[4.5rem]'>
+      <div className='relative container flex items-center justify-between md:gap-14 lg:gap-[4.5rem]'>
         <Hamburger
           setIsMenuActive={setIsMenuActive}
           isMenuActive={isMenuActive}
@@ -45,10 +55,13 @@ const Header = () => {
         )}
         <NavMenu
           closeMenu={closeMenu}
+          closeProfileMenu={closeProfileMenu}
           data={data}
+          isLoggedIn={isLoggedIn}
           isMenuActive={isMenuActive}
-          isLoggerdIn={isLoggedIn}
+          isProfileMenuActive={isProfileMenuActive}
           logIn={logIn}
+          openProfileMenu={openProfileMenu}
         />
       </div>
     </header>

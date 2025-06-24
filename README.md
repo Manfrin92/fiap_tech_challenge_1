@@ -46,7 +46,7 @@ Install all the dependencies
 npm install
 ```
 
-then, run the development server:
+then, run the development server at "/app" directory:
 
 ```bash
 npm run dev
