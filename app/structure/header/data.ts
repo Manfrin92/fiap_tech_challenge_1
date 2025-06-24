@@ -11,6 +11,29 @@ export const data = {
       blanck: false
     }
   ],
+  'loggedInMenu': [
+    {
+      text: 'Inicio',
+      url: '/',
+      blanck: false,
+    },
+    {
+      text: 'Transferências',
+      url: '/transferencias',
+      blanck: false,
+    },
+    {
+      text: 'Investimentos',
+      url: '/investimentos',
+      blanck: false,
+    },
+    {
+      text: 'Outros serviços',
+      url: '/servicos',
+      blanck: false,
+    },
+  ],
+  username: 'Joana da Silva Oliveira',
   'subscribeCta': {
     text: 'Abrir minha conta',
     variant: 'green',
@@ -36,26 +59,4 @@ export const data = {
       blanck: false,
     }
   ],
-  'mobileMenu': [
-    {
-      text: 'Inicio',
-      url: '/',
-      blanck: false,
-    },
-    {
-      text: 'Transferências',
-      url: '/transferencias',
-      blanck: false,
-    },
-    {
-      text: 'Investimentos',
-      url: '/investimentos',
-      blanck: false,
-    },
-    {
-      text: 'Outros serviços',
-      url: '/servicos',
-      blanck: false,
-    },
-  ]
 }

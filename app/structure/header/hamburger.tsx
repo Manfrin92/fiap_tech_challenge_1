@@ -1,13 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface Props {
   className?: string
   isMenuActive: boolean
-  setIsMenuActive: any
+  setIsMenuActive: (value: boolean) => void
 }
 
 const Hamburger: React.FC<Props> = ({
@@ -19,7 +16,7 @@ const Hamburger: React.FC<Props> = ({
     <button
       type="button"
       className={twMerge(
-        'hamburger hamburger--squeeze flex lg:hidden items-center justify-center sticky top-8 left-0 z-[9999] transition-all duration-300',
+        'hamburger hamburger--squeeze flex lg:hidden items-center justify-center sticky top-8 left-0 transition-all duration-300',
         isMenuActive && 'is-active',
         className
       )}
