@@ -80,9 +80,9 @@ const NavMenu: React.FC<Properties> = ({
             </button>
             <ul className='flex flex-col'>
               {profileMenu.map((profileItem, index) => (
-                <li className='py-4 not-last:border-b border-green' key={`item-${index}`}>
+                <li className='py-4 not-last:border-b border-white' key={`item-${index}`}>
                   <Link
-                    className='block w-full text-lg text-center text-green' href={profileItem.url}
+                    className='block w-full text-lg text-center text-white' href={profileItem.url}
                     onClick={closeMenu}
                   >
                     {profileItem.text}
