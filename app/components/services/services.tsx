@@ -1,18 +1,18 @@
-import Loan from '@/assets/icons/loan.svg';
-import Card from '@/assets/icons/card.svg';
-import Donation from '@/assets/icons/donation.svg';
-import Pix from '@/assets/icons/pix.svg';
-import Insurance from '@/assets/icons/insurance.svg';
-import CellPhone from '@/assets/icons/cell-phone.svg';
-import ServiceCard from './ServiceCard';
+import Loan from '@/assets/icons/loan.svg'
+import Card from '@/assets/icons/card.svg'
+import Donation from '@/assets/icons/donation.svg'
+import Pix from '@/assets/icons/pix.svg'
+import Insurance from '@/assets/icons/insurance.svg'
+import CellPhone from '@/assets/icons/cell-phone.svg'
+import ServiceCard from './service-card'
 
-export default function ServicesOptions() {
+const Services = () => {
   return (
-    <div className="flex flex-col bg-background-service-options p-8 pb-7 rounded-lg gap-8 max-w-210">
+    <section className="flex flex-col bg-background-service-options p-8 pb-7 rounded-lg gap-8">
       <h5 className="font-bold text-black text-2xl">
         Confira os serviços disponíveis
       </h5>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
         <ServiceCard icon={<Loan className="text-7xl" />} name="Empréstimo" />
         <ServiceCard icon={<Card className="text-7xl" />} name="Meus cartões" />
         <ServiceCard icon={<Donation className="text-7xl" />} name="Doações" />
@@ -23,6 +23,8 @@ export default function ServicesOptions() {
           name="Crédito celular"
         />
       </div>
-    </div>
-  );
+    </section>
+  )
 }
+
+export default Services

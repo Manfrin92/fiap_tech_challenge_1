@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 import Logo from '@/assets/icons/logo.svg'
 
-import { data } from './data'
 import Socials from './socials'
+import { footerData } from '@/data/global-data'
 
 interface IFooterMenu {
   servicesTitle: string
@@ -24,7 +24,7 @@ const Footer = () => {
     servicesLinks,
     servicesTitle,
     socialsLinks
-  } = data as unknown as IFooterMenu
+  } = footerData as unknown as IFooterMenu
 
   return (
     <footer className='py-[3.25rem] bg-black flex items-center justify-center'>
