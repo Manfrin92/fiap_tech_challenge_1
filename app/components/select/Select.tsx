@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
-import { ChevronDown } from "lucide-react"
+import { IoMdArrowDropdown } from "react-icons/io";
 import { tv } from "tailwind-variants"
 
 interface Option {
@@ -140,7 +140,7 @@ export default function CustomSelect({
         <span className={`text-base ${selectedOption ? "text-gray-700" : "text-gray-500"}`}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
-        <ChevronDown className={selectIconVariants({ borderColor, open: isOpen })} />
+        <IoMdArrowDropdown className={selectIconVariants({ borderColor, open: isOpen })} />
       </button>
 
       {isOpen && (
