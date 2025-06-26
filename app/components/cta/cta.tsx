@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ICta } from '@/types/types'
 import React from 'react'
 import { tv } from 'tailwind-variants'
