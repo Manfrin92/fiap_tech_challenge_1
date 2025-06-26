@@ -20,20 +20,26 @@ interface CustomSelectProps {
 }
 
 const selectButtonVariants = tv({
-  base: "w-full h-16 px-6 bg-white border-2 rounded-xl text-gray-700 text-lg font-medium focus:ring-2 focus:outline-none transition-colors flex items-center justify-between",
+  base: "w-full h-16 px-6 bg-white border-2 text-gray-700 text-lg font-medium focus:outline-none transition-colors flex items-center justify-between",
   variants: {
     borderColor: {
-      green: "border-[var(--color-green)] hover:border-[var(--color-green)] focus:border-[var(--color-green)] focus:ring-[var(--color-green)]",
-      blue: "border-[var(--color-green-dark)] hover:border-[var(--color-green-dark)] focus:border-[var(--color-green-dark)] focus:ring-[var(--color-green-dark)]",
+      green:
+        "border-[var(--color-green)] hover:border-[var(--color-green)] focus:border-[var(--color-green)] focus:ring-[var(--color-green)]",
+      blue: "border-[var(--color-green-dark)] hover:border-[var(--color-green-dark)]",
+    },
+    isOpen: {
+      true: "rounded-t-xl",
+      false: "rounded-xl",
     },
   },
   defaultVariants: {
     borderColor: "blue",
+    isOpen: false,
   },
 })
 
 const selectDropdownVariants = tv({
-  base: "absolute top-full left-0 right-0 mt-1 bg-white border-2 rounded-xl shadow-lg z-50 overflow-hidden",
+  base: "absolute top-full left-0 right-0 bg-white border-2 border-t-0 rounded-b-xl shadow-lg z-50 overflow-hidden",
   variants: {
     borderColor: {
       green: "border-[var(--color-green)]",
@@ -70,9 +76,14 @@ const selectOptionVariants = tv({
       green: "hover:bg-[var(--color-green-light)] hover:font-bold hover:text-[var(--color-gray-dark)]",
       blue: "hover:bg-[var(--color-blue-light)] hover:font-bold hover:text-[var(--color-gray-dark)]",
     },
+    hasTopBorder: {
+      true: "border-t border-gray-200",
+      false: "",
+    },
   },
   defaultVariants: {
     borderColor: "blue",
+    hasTopBorder: false,
   },
 })
 
@@ -124,24 +135,25 @@ export default function CustomSelect({
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        className={selectButtonVariants({ borderColor })}
+        className={selectButtonVariants({ borderColor, isOpen })}
       >
         <span className={`text-base ${selectedOption ? "text-gray-700" : "text-gray-500"}`}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
-        <ChevronDown
-          className={selectIconVariants({ borderColor, open: isOpen })}
-        />
+        <ChevronDown className={selectIconVariants({ borderColor, open: isOpen })} />
       </button>
 
       {isOpen && (
         <div className={selectDropdownVariants({ borderColor })}>
           <ul role="listbox" className="py-1">
-            {options.map((option) => (
+            {options.map((option, index) => (
               <li key={option.value}>
                 <button
                   type="button"
-                  className={selectOptionVariants({ borderColor })}
+                  className={selectOptionVariants({
+                    borderColor,
+                    hasTopBorder: index > 0,
+                  })}
                   onClick={() => handleSelect(option.value)}
                   role="option"
                   aria-selected={selectedValue === option.value}
