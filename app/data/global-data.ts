@@ -131,7 +131,7 @@ export const footerData = {
 
 // EXTRACT
 
-export const extractData = {
+export const bankStatementData = {
   title: 'Extrato',
   transactions: [
     {

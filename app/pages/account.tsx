@@ -1,6 +1,6 @@
 import AsideNav from "@/components/aside-nav"
 import DashboardHero from "@/components/dashboard-hero"
-import Extract from "@/components/extract"
+import BankStatement from "@/components/bank-statement"
 import { NextSeo } from "next-seo"
 
 export default function AccountPage() {
@@ -12,7 +12,7 @@ export default function AccountPage() {
         <div className="lg:col-span-7 flex flex-col gap-5">
           <DashboardHero />
         </div>
-        <Extract />
+        <BankStatement />
       </div>
     </>
   )

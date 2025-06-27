@@ -28,3 +28,12 @@ export const formatDate = (date: Date | string) => {
 
   return `${day}/${month < 10 && '0'}${month}/${year}`
 }
+
+const today = new Date()
+
+export const todayFormatted = new Intl.DateTimeFormat('pt-BR', {
+  weekday: 'long',
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+}).format(today)

@@ -1,23 +1,16 @@
-import Eye from '@/assets/icons/eye.svg';
-import { accountData } from '@/data/global-data';
+import Eye from '@/assets/icons/eye.svg'
+import { accountData } from '@/data/global-data'
+import { todayFormatted } from '@/utils/date'
 
 const DashboardHero = () => {
   const {balance, firstName} = accountData
-  const today = new Date();
   const balanceFormatted = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(balance);
-
-  const todayFormatted = new Intl.DateTimeFormat('pt-BR', {
-    weekday: 'long',
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  }).format(today);
+  }).format(balance)
 
   return (
-    <div className="flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100">
+    <section className="flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100">
       <h5 className="font-bold text-white text-2xl mb-6">Olá, {firstName}! :)</h5>
       <span className="text-white text-sm">{todayFormatted}</span>
       <div className="flex flex-col self-end">
@@ -39,8 +32,8 @@ const DashboardHero = () => {
           {balanceFormatted}
         </span>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
 
 export default DashboardHero

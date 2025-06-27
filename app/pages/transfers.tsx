@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo"
 import AsideNav from "@/components/aside-nav"
 import DashboardHero from "@/components/dashboard-hero"
-import Extract from "@/components/extract"
+import BankStatement from "@/components/bank-statement"
 
 import useLocalStorage from "@/hooks/useLocalStorage"
 
@@ -19,7 +19,7 @@ export default function TransfersPage() {
         <div className="lg:col-span-7 flex flex-col gap-5">
           <DashboardHero />
         </div>
-        <Extract />
+        <BankStatement />
       </div>
       {/* <h1>{valueStorage}</h1>
       <button className='bg-green-dark text-white mr-3 p-2 mt-3' onClick={() => setValueStorage("You are here again")}>Click me</button>

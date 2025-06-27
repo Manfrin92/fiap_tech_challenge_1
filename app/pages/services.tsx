@@ -2,7 +2,7 @@ import Services from '@/components/services'
 import DashboardHero from '@/components/dashboard-hero'
 import { NextSeo } from 'next-seo'
 import AsideNav from '@/components/aside-nav'
-import Extract from '@/components/extract'
+import BankStatement from '@/components/bank-statement'
 
 export default function ServicesPage() {
   return (
@@ -14,7 +14,7 @@ export default function ServicesPage() {
           <DashboardHero />
           <Services />
         </div>
-        <Extract />
+        <BankStatement />
       </div>
     </>
   )

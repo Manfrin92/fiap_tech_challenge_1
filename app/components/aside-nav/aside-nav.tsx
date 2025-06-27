@@ -9,8 +9,6 @@ const AsideNav = () => {
   const {loggedInMenu} = headerData
   const router = useRouter()
 
-  console.log(router.pathname)
-
   return (
     <aside className='hidden md:block lg:col-span-2 rounded-lg lg:bg-white lg:min-h-[58.75rem]'>
       <nav className='lg:flex lg:justify-center'>

@@ -1,22 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { extractData } from '@/data/global-data'
+import { bankStatementData } from '@/data/global-data'
 import useLocalStorage from '@/hooks/useLocalStorage'
 import { formatDate, formatMonth } from '@/utils/date'
 import React, { useEffect } from 'react'
 
-interface IExtractItem {
+interface IBankStatementItem {
   date: string
   amount: number
   type: 'deposit' | 'transfer'
 }
 
-interface IExtract {
+interface IBankStatement {
   title: string
-  transactions: IExtractItem[]
+  transactions: IBankStatementItem[]
 }
 
-const Extract = () => {
-  const { title, transactions } = extractData as IExtract
+const BankStatement = () => {
+  const { title, transactions } = bankStatementData as IBankStatement
   const [storedValue, setValue, getValue] = useLocalStorage('extract-data', transactions)
 
   useEffect(() => {
@@ -51,4 +51,4 @@ const Extract = () => {
   )
 }
 
-export default Extract
+export default BankStatement
