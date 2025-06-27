@@ -129,7 +129,7 @@ export const footerData = {
   ],
 }
 
-// EXTRACT
+// BANK STATEMENT
 
 export const bankStatementData = {
   title: 'Extrato',
@@ -155,4 +155,16 @@ export const bankStatementData = {
       type: 'transfer',
     },
   ]
+}
+
+// 404
+
+export const notFoundData = {
+  title: 'Ops! Não encontramos a página... ',
+  description: 'E olha que exploramos o universo procurando por ela! Que tal voltar e tentar novamente?',
+  cta: {
+    text: 'Voltar para o início',
+    url: '/',
+    blank: false,
+  }
 }
