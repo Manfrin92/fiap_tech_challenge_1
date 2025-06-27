@@ -34,7 +34,7 @@ const NavMenu: React.FC<Properties> = ({
     profileMenu,
     loginCta,
     subscribeCta,
-  } = headerData as unknown as IMenu
+  } = headerData as IMenu
 
 
   return (

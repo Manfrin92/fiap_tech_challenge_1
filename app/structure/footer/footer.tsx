@@ -24,7 +24,7 @@ const Footer = () => {
     servicesLinks,
     servicesTitle,
     socialsLinks
-  } = footerData as unknown as IFooterMenu
+  } = footerData as IFooterMenu
 
   return (
     <footer className='py-[3.25rem] bg-black flex items-center justify-center'>
