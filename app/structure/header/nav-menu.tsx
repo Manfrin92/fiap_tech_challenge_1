@@ -6,11 +6,11 @@ import { twMerge } from 'tailwind-merge'
 
 import Avatar from '@/assets/icons/avatar.svg'
 import Close from '@/assets/icons/close.svg'
+import { accountData, headerData } from '@/data/global-data'
 
 interface Properties {
   closeMenu: () => void
   closeProfileMenu: () => void
-  data: IMenu | unknown
   isLoggedIn: boolean
   isMenuActive: boolean
   isProfileMenuActive: boolean
@@ -19,7 +19,6 @@ interface Properties {
 }
 
 const NavMenu: React.FC<Properties> = ({
-  data,
   closeMenu,
   closeProfileMenu,
   isLoggedIn,
@@ -28,21 +27,22 @@ const NavMenu: React.FC<Properties> = ({
   logIn,
   openProfileMenu
 }) => {
+  const { firstName, lastName } = accountData
   const {
     loggedOutMenu,
     loggedInMenu,
     profileMenu,
     loginCta,
     subscribeCta,
-    username
-  } = data as unknown as IMenu
+  } = headerData as unknown as IMenu
+
 
   return (
     <>
       {isLoggedIn ? (
         <>
           <div className='w-full flex items-center justify-end gap-4'>
-            <span className='hidden md:block'>{username}</span>
+            <span className='hidden md:block'>{`${firstName} ${lastName}`}</span>
             <button onClick={openProfileMenu}>
               <Avatar className='w-10 h-10' />
             </button>
@@ -71,7 +71,7 @@ const NavMenu: React.FC<Properties> = ({
           </nav>
           <nav className={
             twMerge(
-              'fixed md:absolute top-0 md:top-[6rem] right-0 w-fit p-6 pt-10 flex flex-col transition-all duration-300 bg-black',
+              'fixed md:absolute top-0 md:top-[5.5rem] right-0 md:right-8 lg:right-0 w-fit p-6 pt-10 flex flex-col transition-all duration-300 bg-black',
               isProfileMenuActive ? 'translate-x-0 md:translate-y-0 md:opacity-100 md:pointer-events-auto z-20' : 'translate-x-full md:translate-0 md:translate-y-2 md:opacity-0 md:pointer-events-none -z-10',
             )}
           >

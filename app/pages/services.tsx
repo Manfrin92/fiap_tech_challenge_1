@@ -1,19 +1,21 @@
-import ServicesOptions from '@/components/services/ServiceOptions';
-import WelcomeCard from '@/components/services/WelcomeCard';
-import { NextSeo } from 'next-seo';
+import Services from '@/components/services'
+import DashboardHero from '@/components/dashboard-hero'
+import { NextSeo } from 'next-seo'
+import AsideNav from '@/components/aside-nav'
+import BankStatement from '@/components/bank-statement'
 
 export default function ServicesPage() {
-  // TODO: get it from external API
-  const accountOwner = {
-    name: 'Joana',
-    balance: 2500,
-  };
-
   return (
-    <div className="container">
+    <>
       <NextSeo title="Bytebank | Services" />
-      <WelcomeCard name={accountOwner.name} balance={accountOwner.balance} />
-      <ServicesOptions />
-    </div>
-  );
+      <div className="container grid grid-cols-1 lg:grid-cols-12 gap-5 py-5">
+        <AsideNav />
+        <div className="lg:col-span-7 flex flex-col gap-5">
+          <DashboardHero />
+          <Services />
+        </div>
+        <BankStatement />
+      </div>
+    </>
+  )
 }

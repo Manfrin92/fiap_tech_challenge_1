@@ -6,7 +6,6 @@ import Link from 'next/link'
 import Logo from '@/assets/icons/logo.svg'
 import LogoMd from '@/assets/icons/logo-md.svg'
 import NavMenu from './nav-menu'
-import { data } from './data'
 import Hamburger from './hamburger'
 
 export interface IMenu {
@@ -56,7 +55,6 @@ const Header = () => {
         <NavMenu
           closeMenu={closeMenu}
           closeProfileMenu={closeProfileMenu}
-          data={data}
           isLoggedIn={isLoggedIn}
           isMenuActive={isMenuActive}
           isProfileMenuActive={isProfileMenuActive}

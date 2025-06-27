@@ -1,27 +1,17 @@
-import Eye from '@/assets/icons/eye.svg';
+import Eye from '@/assets/icons/eye.svg'
+import { accountData } from '@/data/global-data'
+import { todayFormatted } from '@/utils/date'
 
-interface WelcomeCardProps {
-  name: string;
-  balance: number;
-}
-
-export default function WelcomeCard({ name, balance }: WelcomeCardProps) {
-  const today = new Date();
+const DashboardHero = () => {
+  const {balance, firstName} = accountData
   const balanceFormatted = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(balance);
-
-  const todayFormatted = new Intl.DateTimeFormat('pt-BR', {
-    weekday: 'long',
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  }).format(today);
+  }).format(balance)
 
   return (
-    <div className="flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg max-w-210 min-h-100">
-      <h5 className="font-bold text-white text-2xl mb-6">Olá, {name}! :)</h5>
+    <section className="flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100">
+      <h5 className="font-bold text-white text-2xl mb-6">Olá, {firstName}! :)</h5>
       <span className="text-white text-sm">{todayFormatted}</span>
       <div className="flex flex-col self-end">
         <div className="flex items-center gap-6">
@@ -42,6 +32,8 @@ export default function WelcomeCard({ name, balance }: WelcomeCardProps) {
           {balanceFormatted}
         </span>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
+
+export default DashboardHero
