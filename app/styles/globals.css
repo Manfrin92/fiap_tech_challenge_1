@@ -1,14 +1,17 @@
 @import "tailwindcss";
 @import './base.css' layer(base);
 @import './utilities.css';
+@import './hamburgers.css';
 
 @theme {
   /* COLORS */
   --color-*: initial;
-  --color-current: currentColor; 
+  --color-current: currentColor;
 
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-white-service-bg: #f2f2f2;
+  --color-gray-services-bg: #cbcbcb;
 
   --color-green: #47A138;
   --color-green-light: #E4EDE3;
@@ -37,6 +40,7 @@
   --color-input-border: var(--color-green);
   --color-input-placeholder: var(--color-gray);
   --color-input-text: var(--color-gray-dark);
+  --color-input-error: var(--color-red);
 
   /* COLORS - CURRENT */
   --color-current: currentColor;
@@ -50,6 +54,10 @@
   --color-current-input-border: var(--color-input-border);
   --color-current-input-placeholder: var(--color-input-placeholder);
   --color-current-input-text: var(--color-input-text);
+  
+  /* COLORS - BACKGROUND */
+  --color-background-service-options: var(--color-gray-services-bg);
+  --color-background-service-option: var(--color-white-service-bg);
 
   /* SCREEN */
   --breakpoint-xs: 375px;
@@ -66,6 +74,7 @@
   --font-votorantim: var(--font-inter);
 
   /* FONT SIZE */
+  --text-1: 1rem;
   --text-2.5xl: 1.625rem;
   --text-5.5xl: 3.25rem;
   --text-6.5xl: 4rem;
