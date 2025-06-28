@@ -1,7 +1,7 @@
 import Eye from '@/assets/icons/eye.svg'
 import { accountData } from '@/data/global-data'
 import { todayFormatted } from '@/utils/date'
-import MainWithMoney from '@/assets/icons/man-w-money-ilustration.svg'
+import ManWithMoney from '@/assets/images/man-w-money-ilustration.svg'
 
 const DashboardHero = () => {
   const {balance, firstName} = accountData
@@ -15,7 +15,7 @@ const DashboardHero = () => {
       <div className='flex-1'>
         <h5 className="font-bold text-white text-2xl mb-6">Olá, {firstName}! :)</h5>
         <span className="text-white text-sm">{todayFormatted}</span>
-        <MainWithMoney className="md:block lg:hidden sm:hidden xs:hidden text-[283px] mt-12" />
+        <ManWithMoney className="md:block lg:hidden sm:hidden xs:hidden text-[283px] mt-12" />
       </div>
       <div className="flex flex-col mt-24 sm:mt-10 xs:mt-10">
         <div className="flex items-center gap-6">
@@ -34,7 +34,7 @@ const DashboardHero = () => {
           {balanceFormatted}
         </span>
       </div>
-      <MainWithMoney className="lg:hidden md:hidden sm:block text-[283px] mt-12 xs:mt-32" />
+      <ManWithMoney className="lg:hidden md:hidden sm:block text-[283px] mt-12 xs:mt-32" />
     </section>
   )
 }
