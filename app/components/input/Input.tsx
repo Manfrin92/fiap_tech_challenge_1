@@ -11,7 +11,7 @@ const inputVariants = tv({
   variants: {
     error: {
       true: "border-[var(--color-input-error)]",
-      false: "border-[var(--color-input-text)]",
+      false: "",
     },
   },
 });

@@ -4,6 +4,7 @@ export interface ButtonProps {
   label: string;
   onClick?: () => void;
   backgroundColor?: string;
+  className?: string;
 }
 
 export const Button = ({
@@ -12,6 +13,7 @@ export const Button = ({
   label,
   onClick,
   backgroundColor,
+  className,
 }: ButtonProps) => {
   const baseClasses = `
     font-semibold rounded transition-colors
@@ -31,7 +33,7 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={`${baseClasses} ${sizeClasses} ${modeClasses}`}
+      className={`${baseClasses} ${sizeClasses} ${modeClasses} ${className || ''}`}
       style={backgroundColor ? { backgroundColor } : undefined}
       onClick={onClick}
     >

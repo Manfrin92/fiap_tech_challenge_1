@@ -20,7 +20,7 @@ interface CustomSelectProps {
 }
 
 const selectButtonVariants = tv({
-  base: "w-full h-16 px-6 bg-white border-2 text-gray-700 text-lg font-medium focus:outline-none transition-colors flex items-center justify-between",
+  base: "w-full min-h-10 px-6 bg-white border border-gray-300 text-gray-700 text-lg font-medium focus:outline-none transition-colors flex items-center justify-between",
   variants: {
     borderColor: {
       green:
@@ -28,8 +28,8 @@ const selectButtonVariants = tv({
       blue: "border-[var(--color-green-dark)] hover:border-[var(--color-green-dark)]",
     },
     isOpen: {
-      true: "rounded-t-xl",
-      false: "rounded-xl",
+      true: "rounded-t-lg",
+      false: "rounded-lg",
     },
   },
   defaultVariants: {
@@ -39,7 +39,7 @@ const selectButtonVariants = tv({
 })
 
 const selectDropdownVariants = tv({
-  base: "absolute top-full left-0 right-0 bg-white border-2 border-t-0 rounded-b-xl shadow-lg z-50 overflow-hidden",
+  base: "absolute top-full left-0 right-0 bg-white border border-t-0 rounded-b-lg shadow-lg z-50 overflow-hidden",
   variants: {
     borderColor: {
       green: "border-[var(--color-green)]",

@@ -168,3 +168,15 @@ export const notFoundData = {
     blank: false,
   }
 }
+
+
+// Investiments
+
+ export const investimentsData = {
+   title: 'Nova transação',
+   placeholder: 'Selecione o tipo de transação',
+   transactionType: [
+    'Depósito', 
+    'Débito'
+   ]
+ }
