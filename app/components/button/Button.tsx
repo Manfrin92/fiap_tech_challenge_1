@@ -1,39 +1,58 @@
-export interface ButtonProps {
+import React from "react";
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   primary?: boolean;
   size?: 'small' | 'medium' | 'large';
   label: string;
   onClick?: () => void;
   backgroundColor?: string;
+  variant?: 'primary' | 'secondary' | 'link';
+  fullWidth?: boolean;
+  centered?: boolean;
 }
 
 export const Button = ({
-  primary = false,
   size = 'medium',
   label,
   onClick,
   backgroundColor,
+  variant = 'primary',
+  fullWidth = false,
+  centered = false,
+  disabled,
+  className,
+  ...props
 }: ButtonProps) => {
   const baseClasses = `
-    font-semibold rounded transition-colors
+    font-medium rounded-lg transition-all
     focus:outline-none focus:ring-2 focus:ring-offset-2
   `;
 
   const sizeClasses = {
-    small: 'text-sm px-3 py-1',
-    medium: 'text-base px-5 py-2',
-    large: 'text-lg px-6 py-3',
+    small: 'text-sm px-3 py-2',
+    medium: 'text-sm px-6 py-3 h-[48px]',
+    large: 'text-lg px-6 py-4',
   }[size];
 
-  const modeClasses = primary
-    ? `bg-[var(--color-primary)] text-[var(--color-accent-text)] hover:bg-[var(--color-on-hover)] focus:ring-[var(--color-primary)]`
-    : `bg-[var(--color-secondary)] text-[var(--color-primary)] hover:bg-[var(--color-green-light)] focus:ring-[var(--color-secondary)]`;
+  const variantClasses = {
+    primary: `bg-[var(--color-green)] text-white hover:brightness-110 ${
+      disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+    }`,
+    secondary: `bg-[var(--color-secondary)] text-[var(--color-primary)] hover:bg-[var(--color-green-light)] focus:ring-[var(--color-secondary)]`,
+    link: `text-[var(--color-green)] underline bg-transparent border-none hover:text-green-700 transition-colors cursor-pointer`
+  }[variant];
+
+  const widthClasses = fullWidth ? 'w-full' : 'w-[144px]';
+  const alignClasses = centered ? 'mx-auto block' : '';
 
   return (
     <button
       type="button"
-      className={`${baseClasses} ${sizeClasses} ${modeClasses}`}
+      className={`${baseClasses} ${sizeClasses} ${variantClasses} ${widthClasses} ${alignClasses} ${className || ''}`}
       style={backgroundColor ? { backgroundColor } : undefined}
       onClick={onClick}
+      disabled={disabled}
+      {...props}
     >
       {label}
     </button>
