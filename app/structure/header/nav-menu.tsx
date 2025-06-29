@@ -16,6 +16,7 @@ interface Properties {
   isProfileMenuActive: boolean
   logIn: () => void
   openProfileMenu: () => void
+  openRegister?: () => void // nova prop
 }
 
 const NavMenu: React.FC<Properties> = ({
@@ -25,7 +26,8 @@ const NavMenu: React.FC<Properties> = ({
   isMenuActive,
   isProfileMenuActive,
   logIn,
-  openProfileMenu
+  openProfileMenu,
+  openRegister
 }) => {
   const { firstName, lastName } = accountData
   const {
@@ -115,7 +117,7 @@ const NavMenu: React.FC<Properties> = ({
             ))}
           </ul>
           <div className='hidden md:flex items-center md:gap-6' >
-            <Cta {...subscribeCta} />
+            <Cta {...subscribeCta} onClick={openRegister} />
             <Cta {...loginCta} onClick={logIn} />
           </div>
         </nav>
