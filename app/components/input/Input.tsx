@@ -4,6 +4,9 @@ import { tv } from "tailwind-variants";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   error?: string;
+  label?: string;
+  id: string;
+  labelStyle?:string;
 }
 
 const inputVariants = tv({
@@ -16,11 +19,13 @@ const inputVariants = tv({
   },
 });
 
-const Input = ({ className, error, ...props }: InputProps) => {
+const Input = ({ className, error, label, id, labelStyle, ...props }: InputProps) => {
   return (
     <div className="flex flex-col gap-2">
+      {label && <label htmlFor={id} className={labelStyle}>{label}</label>}
       <input
         className={`${inputVariants({ error: !!error })} ${className ?? ""}`}
+        id={id}
         {...props}
       />
 

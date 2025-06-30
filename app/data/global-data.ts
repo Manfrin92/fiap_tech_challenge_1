@@ -174,9 +174,20 @@ export const notFoundData = {
 
  export const investimentsData = {
    title: 'Nova transação',
-   placeholder: 'Selecione o tipo de transação',
+   placeholderSelect: 'Selecione o tipo de transação',
+   placeholderInput: '00.00',
    transactionType: [
-    'Depósito', 
-    'Débito'
-   ]
+    {
+      label: 'Câmbio de Moeda',
+      value: 'exchange',
+    },
+    {
+      label: 'DOC/TED',
+      value: 'doc-and-ted',
+    },
+    {
+      label: 'Empréstimo e Financiamento',
+      value: 'loan-and-financing',
+    },
+   ],
  }
