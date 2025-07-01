@@ -2,7 +2,7 @@ import AsideNav from '@/components/aside-nav';
 import DashboardHero from '@/components/dashboard-hero';
 import BankStatement from '@/components/bank-statement';
 import { NextSeo } from 'next-seo';
-import InvestimentCard from '@/components/investiments-card/InvestimentCard';
+import InvestimentCard from '@/components/investiments/InvestimentCard';
 
 import { investimentsData } from '@/data/global-data';
 
