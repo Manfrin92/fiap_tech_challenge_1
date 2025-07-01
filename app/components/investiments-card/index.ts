@@ -1,1 +1,1 @@
-export { default } from './investiments-card';
+export { default } from './InvestimentCard';
