@@ -1,13 +1,13 @@
 import CustomSelect from '../select/Select';
 import { Button } from '../button/Button';
 import Input from '../input/Input';
-import { InvestimentFormProps } from './types';
+import { TransactionFormProps } from './types';
 
-const InvestimentForm = ({
+const TransactionForm = ({
   transactionType,
   placeholderInput,
   placeholderSelect,
-}: InvestimentFormProps) => {
+}: TransactionFormProps) => {
   return (
     <form className="flex flex-col items-center lg:items-start md:items-start">
       <CustomSelect
@@ -34,4 +34,4 @@ const InvestimentForm = ({
   );
 };
 
-export default InvestimentForm;
+export default TransactionForm;

@@ -1,25 +1,25 @@
-import InvestimentsCardLayout from './InvestimentCardLayout';
-import InvestimentForm from './InvestimentForm';
-import { InvestimentCardProps } from './types';
+import TransactionsCardLayout from './TransactionCardLayout';
+import TransactionForm from './TransactionForm';
+import { TransactionCardProps } from './types';
 
-const InvestimentCard = ({
+const TransactionCard = ({
   title,
   transactionType,
   placeholderInput,
   placeholderSelect,
-}: InvestimentCardProps) => {
+}: TransactionCardProps) => {
   return (
-    <InvestimentsCardLayout>
+    <TransactionsCardLayout>
       <h5 className="font-bold text-white text-[25px] mb-6 text-center md:text-left lg:text-left">
         {title}
       </h5>
-      <InvestimentForm
+      <TransactionForm
         transactionType={transactionType}
         placeholderInput={placeholderInput}
         placeholderSelect={placeholderSelect}
       />
-    </InvestimentsCardLayout>
+    </TransactionsCardLayout>
   );
 };
 
-export default InvestimentCard;
+export default TransactionCard;

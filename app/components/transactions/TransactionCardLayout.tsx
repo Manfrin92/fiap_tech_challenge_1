@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InvestimentsCardLayout = ({
+const TransactionsCardLayout = ({
   children,
 }: {
   children: React.ReactNode;
@@ -8,9 +8,9 @@ const InvestimentsCardLayout = ({
   return (
     <section
       className="flex flex-col 
-        bg-[url('/images/investiments-mobile.png')] 
-        md:bg-[url('/images/investiments-tablet.png')] 
-        lg:bg-[url('/images/investiments-desktop.png')]
+        bg-[url('/images/transaction-mobile.png')] 
+        md:bg-[url('/images/transaction-tablet.png')] 
+        lg:bg-[url('/images/transaction-desktop.png')]
         bg-no-repeat 
         bg-cover 
         bg-bottom
@@ -26,4 +26,4 @@ const InvestimentsCardLayout = ({
   );
 };
 
-export default InvestimentsCardLayout;
+export default TransactionsCardLayout;

@@ -33,7 +33,7 @@ export const headerData = {
       blank: false,
     },
     {
-      text: 'Investimentos',
+      text: 'Transactionos',
       url: '/investments',
       blank: false,
     },
@@ -170,9 +170,9 @@ export const notFoundData = {
 }
 
 
-// Investiments
+// Transactions
 
- export const investimentsData = {
+ export const TransactionsData = {
    title: 'Nova transação',
    placeholderSelect: 'Selecione o tipo de transação',
    placeholderInput: '00.00',

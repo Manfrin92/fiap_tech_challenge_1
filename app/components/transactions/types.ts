@@ -3,12 +3,12 @@ export interface Option {
   value: string;
 }
 
-export interface InvestimentFormProps {
+export interface TransactionFormProps {
   transactionType: Option[];
   placeholderInput: string;
   placeholderSelect: string;
 }
 
-export interface InvestimentCardProps extends InvestimentFormProps {
+export interface TransactionCardProps extends TransactionFormProps {
   title: string;
 }
