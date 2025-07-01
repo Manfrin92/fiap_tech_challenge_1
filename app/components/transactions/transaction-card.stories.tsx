@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import TransactionCard from './TransactionCard';
+import TransactionCard from './transaction-card';
 
 import { TransactionsData } from '@/data/global-data';
 

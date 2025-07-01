@@ -1,1 +1,1 @@
-export { default } from './TransactionCard';
+export { default } from './transaction-card';

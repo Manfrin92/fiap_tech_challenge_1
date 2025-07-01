@@ -4,7 +4,7 @@ import BankStatement from "@/components/bank-statement"
 import { NextSeo } from "next-seo"
 import { TransactionsData } from "@/data/global-data";
 
-import TransactionCard from "@/components/transactions/TransactionCard";
+import TransactionCard from "@/components/transactions/transaction-card";
 
 
 

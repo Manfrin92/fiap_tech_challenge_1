@@ -1,5 +1,5 @@
-import TransactionsCardLayout from './TransactionCardLayout';
-import TransactionForm from './TransactionForm';
+import TransactionsCardLayout from './transaction-card-layout';
+import TransactionForm from './transaction-form';
 import { TransactionCardProps } from './types';
 
 const TransactionCard = ({
