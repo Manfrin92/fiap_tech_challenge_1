@@ -9,7 +9,7 @@ export default function AccountPage() {
 
   return (
     <>
-      <NextSeo title="Bytebank | Account" />
+      <NextSeo title="Bytebank | Minha Conta" />
       {authStatus && (
         <div className="container grid grid-cols-1 lg:grid-cols-12 gap-5 py-5">
           <AsideNav />

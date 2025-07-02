@@ -3,6 +3,7 @@ import { ICommonLink } from "@/types/types"
 
 import NotFoundImage from '@/assets/images/404.svg'
 import Link from "next/link"
+import { NextSeo } from "next-seo"
 
 interface INotFound {
   title: string
@@ -14,19 +15,22 @@ export default function NotFoundPage() {
   const {cta, description, title} = notFoundData as INotFound
 
   return (
-    <div className="w-screen h-screen  py-10 bg-gradient-to-b from-green-dark to-white">
-      <div className="container flex flex-col items-center gap-5 text-black text-center">
-        <h1 className="text-[1.5625rem] font-bold">{title}</h1>
-        <p className="max-w-[27.75rem]">{description}</p>
-        <Link
-          href={cta.url}
-          target={cta.blank ? '_blank' : '_self'}
-          className="px-2 py-3 bg-orange text-white hover:bg-green-dark font-semibold rounded-lg hover:shadow-lg transition-all duration-200"
-        >
-          {cta.text}
-        </Link>
-        <NotFoundImage className='w-full md:w-[29.375rem] h-auto md:h-[22.125rem] pt-3' />
+    <>
+      <NextSeo title="Página não encontrada" />
+      <div className="w-screen h-screen py-10 bg-gradient-to-b from-green-dark to-white">
+        <div className="container flex flex-col items-center gap-5 text-black text-center">
+          <h1 className="text-[1.5625rem] font-bold">{title}</h1>
+          <p className="max-w-[27.75rem]">{description}</p>
+          <Link
+            href={cta.url}
+            target={cta.blank ? '_blank' : '_self'}
+            className="px-2 py-3 bg-orange text-white hover:bg-green-dark font-semibold rounded-lg hover:shadow-lg transition-all duration-200"
+          >
+            {cta.text}
+          </Link>
+          <NotFoundImage className='w-full md:w-[29.375rem] h-auto md:h-[22.125rem] pt-3' />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
