@@ -15,15 +15,15 @@ const DashboardHero = () => {
       <div className='flex-1'>
         <h5 className="font-bold text-white text-2xl mb-6">Olá, {firstName}! :)</h5>
         <span className="text-white text-sm">{todayFormatted}</span>
-        <ManWithMoney className="md:block lg:hidden sm:hidden xs:hidden text-[283px] mt-12" />
+        <ManWithMoney className="md:block lg:hidden xs:hidden text-[283px] mt-12" />
       </div>
-      <div className="flex flex-col mt-24 sm:mt-10 xs:mt-10">
+      <div className="flex flex-col mt-24 ">
         <div className="flex items-center gap-6">
           <h4 className="font-semibold text-white text-xl">Saldo</h4>
           <Eye className="text-2xl" />
         </div>
         <hr
-          className="mt-4 lg:bg-red md:bg-accent-text sm:bg-accent-text"
+          className="mt-4 lg:bg-red md:bg-accent-text"
           style={{
             border: 'none',
             height: '2px',
@@ -34,7 +34,7 @@ const DashboardHero = () => {
           {balanceFormatted}
         </span>
       </div>
-      <ManWithMoney className="lg:hidden md:hidden sm:block text-[283px] mt-12 xs:mt-32" />
+      <ManWithMoney className="md:hidden text-[283px] mt-12" />
     </section>
   )
 }
