@@ -7,15 +7,7 @@ const TransactionsCardLayout = ({
 }) => {
   return (
     <section
-      className="flex flex-col 
-        bg-[url('/images/transaction-mobile.png')] 
-        md:bg-[url('/images/transaction-tablet.png')] 
-        lg:bg-[url('/images/transaction-desktop.png')]
-        bg-no-repeat 
-        bg-cover 
-        bg-bottom
-        md:bg-bottom-right
-        lg:bg-bottom
+      className="flex flex-col relative
         pb-[141px] 
         rounded-lg 
         min-h-[633px] md:min-h-[629px] lg:min-h-100

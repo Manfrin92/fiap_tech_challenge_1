@@ -11,4 +11,5 @@ export interface TransactionFormProps {
 
 export interface TransactionCardProps extends TransactionFormProps {
   title: string;
+  imageAlt: string;
 }

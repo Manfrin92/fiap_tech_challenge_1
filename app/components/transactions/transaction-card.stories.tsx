@@ -18,15 +18,16 @@ export default meta;
 
 type Story = StoryObj<typeof TransactionCard>;
 
-const {title, transactionType, placeholderInput, placeholderSelect} = TransactionsData;
+const {title, transactionType, placeholderInput, placeholderSelect, imageAlt} = TransactionsData;
 
 export const Default: Story = {
 
 
   args: {
     title: title,
-    transactionType: transactionType,
-    placeholderInput: placeholderInput,
-    placeholderSelect: placeholderSelect,
+    transactionType,
+    placeholderInput,
+    placeholderSelect,
+    imageAlt,
   },
 }; 

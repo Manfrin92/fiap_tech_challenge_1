@@ -9,7 +9,7 @@ const TransactionForm = ({
   placeholderSelect,
 }: TransactionFormProps) => {
   return (
-    <form className="flex flex-col items-center lg:items-start md:items-start">
+    <form className="flex flex-col items-center lg:items-start md:items-start z-2">
       <CustomSelect
         borderColor="blue"
         options={transactionType}
