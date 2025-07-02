@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AuthLayout } from "./AuthLayout";
+import { AuthLayout } from "./auth-layout";
 import Input from "../input/Input";
 import { Button } from "../button/Button";
 import IlustracaoLogin from "@/assets/images/ilustracaoLogin.svg";
@@ -34,7 +34,6 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <Input
           label="Senha"
           type="password"
@@ -42,15 +41,12 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
         <div className="text-left mb-2">
           <Button
             variant="link"
             label="Esqueci a senha!"
-            onClick={() => {}}
           />
         </div>
-
         <Button label="Acessar" onClick={handleSubmit} centered />
       </div>
     </AuthLayout>

@@ -12,14 +12,14 @@ export const headerData = {
   loggedOutMenu: [
     {
       text: 'Sobre',
-      url: '/#sobre',
-      blank: false,
+      url: '/#about',
+      blank: false
     },
     {
       text: 'Serviços',
-      url: '/services',
-      blank: false,
-    },
+      url: '/#services',
+      blank: false
+    }
   ],
   loggedInMenu: [
     {
@@ -44,7 +44,7 @@ export const headerData = {
     },
   ],
   subscribeCta: {
-    text: 'Abrir minha conta',
+    text: 'Abrir conta',
     variant: 'green',
   },
   loginCta: {
@@ -54,12 +54,12 @@ export const headerData = {
   profileMenu: [
     {
       text: 'Minha conta',
-      url: '/minha-conta',
+      url: '/account',
       blank: false,
     },
     {
       text: 'Configurações',
-      url: '/minha-conta',
+      url: '/account',
       blank: false,
     },
     {
@@ -77,19 +77,19 @@ export const footerData = {
   servicesLinks: [
     {
       text: 'Conta corrente',
-      url: '/services',
-      blank: false,
+      url: '/',
+      blank: false
     },
     {
       text: 'Conta PJ',
-      url: '/services',
-      blank: false,
+      url: '/',
+      blank: false
     },
     {
       text: 'Cartão de Crédito',
-      url: '/services',
-      blank: false,
-    },
+      url: '/',
+      blank: false
+    }
   ],
   contactTitle: 'Contato',
   contactLinks: [
@@ -167,8 +167,37 @@ export const notFoundData = {
     text: 'Voltar para o início',
     url: '/',
     blank: false,
-  },
-};
+  }
+}
+
+// HOME LOGGEDOUT
+
+export const loggedOutData = {
+  description: 'Experimente mais liberdade no controle da sua vida financeira. Crie sua conta com a gente!',
+  subtitle: 'Vantagens do nosso banco:',
+  features: [
+    {
+      icon: 'box',
+      title: 'Conta e cartão gratuitos',
+      description: 'Isso mesmo, nossa conta é digital, sem custo fixo e mais que isso: sem tarifa de manutenção.',
+    },
+    {
+      icon: 'money',
+      title: 'Saques sem custo',
+      description: 'Você pode sacar gratuitamente 4x por mês de qualquer Banco 24h.',
+    },
+    {
+      icon: 'star',
+      title: 'Programa de pontos',
+      description: 'Você pode acumular pontos com suas compras no crédito sem pagar mensalidade!',
+    },
+    {
+      icon: 'devices',
+      title: 'Seguro Dispositivos',
+      description: 'Seus dispositivos móveis (computador e laptop) protegidos por uma mensalidade simbólica.',
+    },
+  ]
+}
 
 // Transactions
 

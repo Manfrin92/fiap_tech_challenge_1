@@ -10,14 +10,14 @@ interface AuthLayoutProps {
   subtitle?: string;
 }
 
-export function AuthLayout({ 
-  children, 
-  illustration: Illustration, 
+export function AuthLayout({
+  children,
+  illustration: Illustration,
   illustrationAlt,
   illustrationWidth,
   illustrationHeight,
   title,
-  subtitle 
+  subtitle
 }: AuthLayoutProps) {
   return (
     <div className="flex flex-col">
