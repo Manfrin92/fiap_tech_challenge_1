@@ -1,8 +1,11 @@
-import { loggedOutData } from '@/data/global-data'
 import React from 'react'
+import { headerData, loggedOutData } from '@/data/global-data'
+import { IMenu } from '@/structure/header/header'
 
 import LoggedOutImage from '@/assets/images/logged-out-image.svg'
 import IconSelector from '../icon-selector'
+import Cta from '../cta'
+import useStateController from '@/hooks/use-state-controller'
 
 interface IFeature {
   icon: 'box' | 'money' | 'star' | 'devices'
@@ -18,6 +21,8 @@ interface ILoggedOutProps {
 
 export const LoggedOutLayout = () => {
   const {description, features, subtitle} = loggedOutData as ILoggedOutProps
+  const {loginCta, subscribeCta} = headerData as IMenu
+  const {setIsAuthModalOpen, setCurrentAuthModal} = useStateController()
 
   return (
     <section>
@@ -30,6 +35,24 @@ export const LoggedOutLayout = () => {
         </picture>
       </div>
       <div id='services' className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 pb-20 lg:pb-24'>
+        <div className='flex md:hidden items-center justify-center gap-6' >
+          <Cta
+            {...subscribeCta}
+            variant='black'
+            onClick={() => {
+              setIsAuthModalOpen(true)
+              setCurrentAuthModal('subscribe')
+            }}
+          />
+          <Cta
+            {...loginCta}
+            variant='black-inverted'
+            onClick={() => {
+              setIsAuthModalOpen(true)
+              setCurrentAuthModal('login')
+            }}
+          />
+        </div>
         <h2 className='col-span-full text-center text-xl md:text-[1.5625rem] text-black font-semibold'>{subtitle}</h2>
         {features.map((feature, index) => (
           <div className='flex flex-col items-center gap-4 text-center' key={`feature-${index}`}>

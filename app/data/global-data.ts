@@ -44,7 +44,7 @@ export const headerData = {
     },
   ],
   subscribeCta: {
-    text: 'Abrir minha conta',
+    text: 'Abrir conta',
     variant: 'green',
   },
   loginCta: {
