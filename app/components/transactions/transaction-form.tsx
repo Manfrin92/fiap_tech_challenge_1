@@ -16,20 +16,25 @@ const TransactionForm = ({
         placeholder={placeholderSelect}
         className="mb-8 max-w-[350px] h-10"
       />
-      <Input
-        placeholder={placeholderInput}
-        className="border-[var(--color-green-dark)] mb-8 max-w-[250px] bg-white"
-        id="price"
-        label="Valor"
-        labelStyle="text-white font-semibold"
-        type="number"
-      />
-      <Button
-        label="Concluir transação"
-        onClick={() => {}}
-        primary
-        className=" max-w-[144px] lg:max-w-[250px] md:max-w-[250px]"
-      />
+      <div className='max-w-[144px] md:max-w-[250px] lg:max-w-[250px]'>
+        <Input
+          placeholder={placeholderInput}
+          className="border-[var(--color-green-dark)] mb-8 bg-white"
+          id="price"
+          label="Valor"
+          labelStyle="text-white font-semibold text-center md:text-left lg:text-left"
+          type="number"
+        />
+      </div>
+      <div className='max-w-[144px] md:max-w-[250px] lg:max-w-[250px]'>
+        <Button
+          label="Concluir transação"
+          onClick={() => {}}
+          primary
+          className="w-full bg-[var(--color-green-dark)] py-0"
+        />
+      </div>
+
     </form>
   );
 };
