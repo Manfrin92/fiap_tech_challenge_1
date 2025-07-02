@@ -1,6 +1,8 @@
 import AsideNav from "@/components/aside-nav"
 import DashboardHero from "@/components/dashboard-hero"
 import BankStatement from "@/components/bank-statement"
+import TransactionCard from "@/components/transactions/transaction-card";
+
 import { NextSeo } from "next-seo"
 import useStateController from "@/hooks/use-state-controller"
 import LoggedOutLayout from "@/components/logged-out-layout/logged-out-layout"
@@ -16,6 +18,7 @@ export default function Home() {
           <AsideNav />
           <div className="lg:col-span-7 flex flex-col gap-5">
             <DashboardHero />
+            <TransactionCard />
           </div>
           <BankStatement />
         </div>

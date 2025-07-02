@@ -5,6 +5,8 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   error?: string;
   label?: string;
+  id: string;
+  labelStyle?:string;
 }
 
 const inputVariants = tv({
@@ -17,16 +19,17 @@ const inputVariants = tv({
   },
 });
 
-const Input = ({ className, error, label, ...props }: InputProps) => {
+const Input = ({ className, error, label, id, labelStyle, ...props }: InputProps) => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 w-full">
       {label && (
-        <label className="block text-sm font-bold text-gray-700">
+        <label className={`block text-sm font-bold text-gray-700 ${labelStyle}`}>
           {label}
         </label>
       )}
       <input
         className={`${inputVariants({ error: !!error })} ${className ?? ""}`}
+        id={id}
         {...props}
       />
 

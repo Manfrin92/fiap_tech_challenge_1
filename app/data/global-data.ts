@@ -4,7 +4,7 @@ export const accountData = {
   firstName: 'Joana',
   lastName: 'da Silva Oliveira',
   balance: 2500,
-}
+};
 
 // HEADER
 
@@ -33,7 +33,7 @@ export const headerData = {
       blank: false,
     },
     {
-      text: 'Investimentos',
+      text: 'Transactionos',
       url: '/investments',
       blank: false,
     },
@@ -66,9 +66,9 @@ export const headerData = {
       text: 'Sair',
       url: '/',
       blank: false,
-    }
+    },
   ],
-}
+};
 
 // FOOTER
 
@@ -96,38 +96,38 @@ export const footerData = {
     {
       text: '0800 004 250 08',
       url: 'tel:080000425008',
-      blank: true
+      blank: true,
     },
     {
       text: 'meajuda@bytebank.com.br',
       url: 'mailto:meajuda@bytebank.com.br',
-      blank: true
+      blank: true,
     },
     {
       text: 'ouvidoria@bytebank.com.br',
       url: 'mailto:ouvidoria@bytebank.com.br',
-      blank: true
-    }
+      blank: true,
+    },
   ],
   copyrightTitle: 'Desenvolvido por Alura',
   socialsLinks: [
     {
       type: 'instagram',
       url: 'https://www.instagram.com/bytebank/',
-      blank: true
+      blank: true,
     },
     {
       type: 'whatsapp',
       url: 'https://api.whatsapp.com/send?phone=5500000000000',
-      blank: true
+      blank: true,
     },
     {
       type: 'youtube',
       url: 'https://www.youtube.com/bytebank',
-      blank: true
-    }
+      blank: true,
+    },
   ],
-}
+};
 
 // BANK STATEMENT
 
@@ -154,14 +154,15 @@ export const bankStatementData = {
       amount: 500,
       type: 'transfer',
     },
-  ]
-}
+  ],
+};
 
 // 404
 
 export const notFoundData = {
   title: 'Ops! Não encontramos a página... ',
-  description: 'E olha que exploramos o universo procurando por ela! Que tal voltar e tentar novamente?',
+  description:
+    'E olha que exploramos o universo procurando por ela! Que tal voltar e tentar novamente?',
   cta: {
     text: 'Voltar para o início',
     url: '/',
@@ -197,3 +198,27 @@ export const loggedOutData = {
     },
   ]
 }
+
+// Transactions
+
+export const TransactionsData = {
+  title: 'Nova transação',
+  placeholderSelect: 'Selecione o tipo de transação',
+  placeholderInput: '00.00',
+  transactionType: [
+    {
+      label: 'Câmbio de Moeda',
+      value: 'exchange',
+    },
+    {
+      label: 'DOC/TED',
+      value: 'doc-and-ted',
+    },
+    {
+      label: 'Empréstimo e Financiamento',
+      value: 'loan-and-financing',
+    },
+  ],
+  imageAlt:
+    'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
+};
