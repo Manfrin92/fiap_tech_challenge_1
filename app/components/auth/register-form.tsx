@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AuthLayout } from "./AuthLayout";
+import { AuthLayout } from "./auth-layout";
 import Input from "../input/Input";
 import { Button } from "../button/Button";
 import IlustracaoCriacaoLogin from "@/assets/images/IlustraçãoCriacaoLogin.svg";
