@@ -1,9 +1,15 @@
 // ACCOUNT
 
 export const accountData = {
+  title: 'Minha conta',
   firstName: 'Joana',
   lastName: 'da Silva Oliveira',
+  email: 'joanadasilvaoliveira@email.com.br',
   balance: 2500,
+  cta: {
+    text: 'Salvar alterações',
+    variant: 'orange',
+  },
 };
 
 // HEADER
@@ -13,13 +19,13 @@ export const headerData = {
     {
       text: 'Sobre',
       url: '/#about',
-      blank: false
+      blank: false,
     },
     {
       text: 'Serviços',
       url: '/#services',
-      blank: false
-    }
+      blank: false,
+    },
   ],
   loggedInMenu: [
     {
@@ -33,7 +39,7 @@ export const headerData = {
       blank: false,
     },
     {
-      text: 'Transactions',
+      text: 'Investimentos',
       url: '/investments',
       blank: false,
     },
@@ -78,18 +84,18 @@ export const footerData = {
     {
       text: 'Conta corrente',
       url: '/',
-      blank: false
+      blank: false,
     },
     {
       text: 'Conta PJ',
       url: '/',
-      blank: false
+      blank: false,
     },
     {
       text: 'Cartão de Crédito',
       url: '/',
-      blank: false
-    }
+      blank: false,
+    },
   ],
   contactTitle: 'Contato',
   contactLinks: [
@@ -167,39 +173,44 @@ export const notFoundData = {
     text: 'Voltar para o início',
     url: '/',
     blank: false,
-  }
-}
+  },
+};
 
-// HOME LOGGEDOUT
+// HOME LOGGED-OUT
 
 export const loggedOutData = {
-  description: 'Experimente mais liberdade no controle da sua vida financeira. Crie sua conta com a gente!',
+  description:
+    'Experimente mais liberdade no controle da sua vida financeira. Crie sua conta com a gente!',
   subtitle: 'Vantagens do nosso banco:',
   features: [
     {
       icon: 'box',
       title: 'Conta e cartão gratuitos',
-      description: 'Isso mesmo, nossa conta é digital, sem custo fixo e mais que isso: sem tarifa de manutenção.',
+      description:
+        'Isso mesmo, nossa conta é digital, sem custo fixo e mais que isso: sem tarifa de manutenção.',
     },
     {
       icon: 'money',
       title: 'Saques sem custo',
-      description: 'Você pode sacar gratuitamente 4x por mês de qualquer Banco 24h.',
+      description:
+        'Você pode sacar gratuitamente 4x por mês de qualquer Banco 24h.',
     },
     {
       icon: 'star',
       title: 'Programa de pontos',
-      description: 'Você pode acumular pontos com suas compras no crédito sem pagar mensalidade!',
+      description:
+        'Você pode acumular pontos com suas compras no crédito sem pagar mensalidade!',
     },
     {
       icon: 'devices',
       title: 'Seguro Dispositivos',
-      description: 'Seus dispositivos móveis (computador e laptop) protegidos por uma mensalidade simbólica.',
+      description:
+        'Seus dispositivos móveis (computador e laptop) protegidos por uma mensalidade simbólica.',
     },
-  ]
-}
+  ],
+};
 
-// Transactions
+// TRANSACTIONS
 
 export const TransactionsData = {
   title: 'Nova transação',
@@ -223,7 +234,6 @@ export const TransactionsData = {
     'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
 };
 
-
 // Transactions
 
 export const InvestmentsData = {
@@ -233,11 +243,11 @@ export const InvestmentsData = {
   rates: [
     {
       title: 'Renda Fixa',
-      price: 36000
+      price: 36000,
     },
     {
       title: 'Renda Variável',
-      price: 14000
-    }
-]
-}
+      price: 14000,
+    },
+  ],
+};
