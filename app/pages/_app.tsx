@@ -14,7 +14,7 @@ const inter = Inter({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${inter.className} font-[family-name:var(--font-inter)]`}>
+    <div className={`${inter.className} font-inter`}>
       <StateControllerProvider>
         <Header />
         <main className="min-h-screen">

@@ -72,7 +72,7 @@
   --breakpoint-3xl: 1920px;
 
   /* FONT */
-  --font-votorantim: var(--font-inter);
+  --font-inter: var(--font-inter);
 
   /* FONT SIZE */
   --text-1: 1rem;

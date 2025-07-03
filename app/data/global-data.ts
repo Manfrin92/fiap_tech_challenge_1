@@ -1,9 +1,15 @@
 // ACCOUNT
 
 export const accountData = {
+  title: 'Minha conta',
   firstName: 'Joana',
   lastName: 'da Silva Oliveira',
+  email: 'joanadasilvaoliveira@email.com.br',
   balance: 2500,
+  cta: {
+    text: 'Salvar alterações',
+    variant: 'orange',
+  }
 };
 
 // HEADER
@@ -33,7 +39,7 @@ export const headerData = {
       blank: false,
     },
     {
-      text: 'Transactionos',
+      text: 'Investimentos',
       url: '/investments',
       blank: false,
     },
@@ -170,7 +176,7 @@ export const notFoundData = {
   }
 }
 
-// HOME LOGGEDOUT
+// HOME LOGGED-OUT
 
 export const loggedOutData = {
   description: 'Experimente mais liberdade no controle da sua vida financeira. Crie sua conta com a gente!',
@@ -199,7 +205,7 @@ export const loggedOutData = {
   ]
 }
 
-// Transactions
+// TRANSACTIONS
 
 export const TransactionsData = {
   title: 'Nova transação',
@@ -221,4 +227,4 @@ export const TransactionsData = {
   ],
   imageAlt:
     'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
-};
+}
