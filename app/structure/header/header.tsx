@@ -36,7 +36,7 @@ const Header = () => {
   }, [])
 
   return (
-    <header className={twMerge('sticky top-0 h-24 flex items-center justify-center', authStatus ? 'text-white bg-green-dark' : 'text-green bg-black')}>
+    <header className={twMerge('sticky z-10 top-0 h-24 flex items-center justify-center', authStatus ? 'text-white bg-green-dark' : 'text-green bg-black')}>
       <div className='relative container flex items-center justify-between md:gap-14 lg:gap-[4.5rem]'>
         <Hamburger
           setIsMenuActive={setIsMenuActive}

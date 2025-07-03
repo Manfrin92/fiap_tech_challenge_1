@@ -33,7 +33,7 @@ export const headerData = {
       blank: false,
     },
     {
-      text: 'Transactionos',
+      text: 'Transactions',
       url: '/investments',
       blank: false,
     },
@@ -222,3 +222,22 @@ export const TransactionsData = {
   imageAlt:
     'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
 };
+
+
+// Transactions
+
+export const InvestmentsData = {
+  title: 'Investimentos',
+  total: 50000,
+  sectionTitle: 'Estatítiscas',
+  rates: [
+    {
+      title: 'Renda Fixa',
+      price: 36000
+    },
+    {
+      title: 'Renda Variável',
+      price: 14000
+    }
+]
+}
