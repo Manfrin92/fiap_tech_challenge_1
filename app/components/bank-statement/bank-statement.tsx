@@ -16,12 +16,12 @@ export interface IBankStatement {
 
 const BankStatement = () => {
   const { title, transactions } = bankStatementData as IBankStatement
-  const { storedValue } = useLocalStorage('statement', transactions)
-  const [currentStatement, setCurrentStatement] = useState<IBankStatementItem[]>(storedValue)
+  const { getValue } = useLocalStorage('statement', transactions)
+  const [ currentStatement, setCurrentStatement ] = useState<IBankStatementItem[]>(getValue())
 
   useEffect(() => {
-    setCurrentStatement(storedValue)
-  }, [storedValue])
+    setCurrentStatement(getValue())
+  }, [getValue])
 
   return (
     <section className='lg:col-span-3 rounded-lg bg-white px-6 py-8'>
