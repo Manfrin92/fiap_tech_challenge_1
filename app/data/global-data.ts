@@ -5,6 +5,7 @@ export const accountData = {
   firstName: 'Joana',
   lastName: 'da Silva Oliveira',
   email: 'joanadasilvaoliveira@email.com.br',
+  imageAlt: 'Interface de transações financeiras com elementos gráficos em blocos nos cantos inferior esquerdo e superior direito',
   balance: 2500,
   cta: {
     text: 'Salvar alterações',

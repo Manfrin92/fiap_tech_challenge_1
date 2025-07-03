@@ -24,6 +24,7 @@ const TransactionCard = () => {
         className="md:hidden lg:hidden absolute top-0 left-0 w-full h-full"
         src={image1}
         alt={imageAlt}
+        quality={100}
         width={500}
         height={300}
       />
@@ -31,13 +32,15 @@ const TransactionCard = () => {
         className="hidden md:block lg:hidden absolute top-0 left-0 w-full h-full"
         src={image2}
         alt={imageAlt}
+        quality={100}
         width={500}
         height={300}
       />
       <Image
         className="hidden md:hidden lg:block absolute top-0 left-0 w-full h-full"
         src={image3}
-        alt=""
+        alt={imageAlt}
+        quality={100}
         aria-hidden="true"
         width={500}
         height={300}

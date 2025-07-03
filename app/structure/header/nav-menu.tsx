@@ -85,7 +85,7 @@ const NavMenu: React.FC<Properties> = ({
                 <li className='py-4 border-b border-white' key={`item-${index}`}>
                   <Link
                     className='block w-full text-lg text-center text-white' href={profileItem.url}
-                    onClick={closeMenu}
+                    onClick={closeProfileMenu}
                   >
                     {profileItem.text}
                   </Link>
