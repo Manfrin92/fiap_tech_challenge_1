@@ -46,7 +46,7 @@ const Header = () => {
   return (
     <header
       className={twMerge(
-        'sticky top-0 z-[9999] flex items-center justify-center transition-all duration-300',
+        'sticky top-0 left-0 z-50 flex items-center justify-center transition-all duration-300',
         authStatus ? 'text-white bg-green-dark' : 'text-green bg-black',
         isScrolled ? 'h-20' : 'h-24'
       )}
