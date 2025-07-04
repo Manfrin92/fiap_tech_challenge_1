@@ -10,7 +10,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const inputVariants = tv({
-  base: "w-full bg-gray-50 border rounded-lg px-4 py-3 text-sm placeholder-gray-400 text-gray-700 focus:outline-none focus:ring-2 focus:border-transparent transition-all",
+  base: "w-full bg-white border rounded-lg px-4 py-3 text-sm placeholder-gray-700 text-gray-700 focus:outline-none focus:ring-2 focus:border-transparent transition-all",
   variants: {
     error: {
       true: "border-[var(--color-error)] focus:ring-[var(--color-error)]",
