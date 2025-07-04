@@ -21,7 +21,9 @@ const InvestmentCard = () => {
       <div className="relative">
         <InvestmentHeader />
         <InvestmentRates />
-        <p className="text-black text-xl font-normal mt-10 mb-8">{sectionTitle}</p>
+        <p className="text-black text-xl font-normal mt-10 mb-8">
+          {sectionTitle}
+        </p>
         <InvestmentChart />
       </div>
     </InvestmentCardLayout>

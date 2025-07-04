@@ -99,7 +99,7 @@ export default function CustomSelect({
   const [selectedValue, setSelectedValue] = useState(defaultValue || "")
   const selectRef = useRef<HTMLDivElement>(null)
 
-  const selectedOption = options.find((option) => option.value === selectedValue)
+  const selectedOption = selectedValue ? options.find((option) => option.value === selectedValue) : null
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -111,6 +111,14 @@ export default function CustomSelect({
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
+
+  const handleOpenSelect = () => {
+    if (!selectedValue && options.length > 0) {
+      setSelectedValue(options[0].value)
+      onValueChange?.(options[0].value)
+    }
+    setIsOpen(!isOpen)
+  }
 
   const handleSelect = (value: string) => {
     setSelectedValue(value)
@@ -131,14 +139,14 @@ export default function CustomSelect({
     <div className={`relative w-full ${className}`} ref={selectRef}>
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleOpenSelect}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         className={selectButtonVariants({ borderColor, isOpen })}
       >
         <span className={`text-base ${selectedOption ? "text-gray-700" : "text-gray-500"}`}>
-          {selectedOption ? selectedOption.label : placeholder}
+          {selectedOption?.label || placeholder}
         </span>
         <IoMdArrowDropdown className={selectIconVariants({ borderColor, open: isOpen })} />
       </button>
