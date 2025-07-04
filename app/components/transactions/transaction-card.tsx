@@ -8,7 +8,6 @@ import image1 from '@/assets/images/transaction-mobile.png';
 import image2 from '@/assets/images/transaction-tablet.png';
 import image3 from '@/assets/images/transaction-desktop.png';
 
-
 const TransactionCard = () => {
 
   const { title, transactionType, placeholderInput, placeholderSelect, imageAlt } =
@@ -17,7 +16,7 @@ const TransactionCard = () => {
 
   return (
     <TransactionsCardLayout>
-      <h5 className="font-bold text-white text-[25px] mb-6 text-center md:text-left">
+      <h5 className="font-bold text-white text-[25px] mb-6 text-center md:text-left z-2">
         {title}
       </h5>
       <Image

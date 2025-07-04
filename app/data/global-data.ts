@@ -222,17 +222,13 @@ export const TransactionsData = {
   placeholderInput: '00.00',
   transactionType: [
     {
-      label: 'Câmbio de Moeda',
-      value: 'exchange',
+      label: 'Depósito',
+      value: 'deposit',
     },
     {
       label: 'DOC/TED',
-      value: 'doc-and-ted',
-    },
-    {
-      label: 'Empréstimo e Financiamento',
-      value: 'loan-and-financing',
-    },
+      value: 'transfer',
+    }
   ],
   imageAlt:
     'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
