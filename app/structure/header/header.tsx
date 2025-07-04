@@ -1,5 +1,5 @@
 import { ICta, ICommonLink } from '@/types/types'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import Link from 'next/link'
 
@@ -8,6 +8,7 @@ import LogoMd from '@/assets/icons/logo-md.svg'
 import NavMenu from './nav-menu'
 import Hamburger from './hamburger'
 import useStateController from '@/hooks/use-state-controller'
+import { getScrollPosition } from '@/utils/scroll-position'
 
 export interface IMenu {
   loggedOutMenu: ICommonLink[]
@@ -21,6 +22,7 @@ export interface IMenu {
 const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false)
   const [isProfileMenuActive, setIsProfileMenuActive] = useState<boolean>(false)
+  const [isScrolled, setIsScrolled] = useState<boolean>(false)
   const {authStatus} = useStateController()
 
   const closeMenu = useCallback(() => {
@@ -35,8 +37,20 @@ const Header = () => {
     setIsProfileMenuActive(false)
   }, [])
 
+  useEffect(() => {
+    getScrollPosition((scrollPosition) => {
+      setIsScrolled(scrollPosition > 0)
+    })
+  }, [])
+
   return (
-    <header className={twMerge('sticky top-0 h-24 flex items-center justify-center', authStatus ? 'text-white bg-green-dark' : 'text-green bg-black')}>
+    <header
+      className={twMerge(
+        'sticky top-0 z-[9999] flex items-center justify-center transition-all duration-300',
+        authStatus ? 'text-white bg-green-dark' : 'text-green bg-black',
+        isScrolled ? 'h-20' : 'h-24'
+      )}
+    >
       <div className='relative container flex items-center justify-between md:gap-14 lg:gap-[4.5rem]'>
         <Hamburger
           setIsMenuActive={setIsMenuActive}

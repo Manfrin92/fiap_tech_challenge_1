@@ -3,6 +3,7 @@ import AsideNav from "@/components/aside-nav"
 import DashboardHero from "@/components/dashboard-hero"
 import BankStatement from "@/components/bank-statement"
 import useStateController from "@/hooks/use-state-controller"
+import TransactionCard from "@/components/transactions"
 
 export default function TransfersPage() {
   const {authStatus} = useStateController()
@@ -15,6 +16,7 @@ export default function TransfersPage() {
           <AsideNav />
           <div className="lg:col-span-7 flex flex-col gap-5">
             <DashboardHero />
+            <TransactionCard />
           </div>
           <BankStatement />
         </div>

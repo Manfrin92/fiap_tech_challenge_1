@@ -16,10 +16,10 @@ const Modal = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex justify-center bg-[#00000080] overflow-y-auto"
+      className="fixed inset-0 z-[9999] flex justify-center bg-[#00000080] overflow-y-auto"
     >
       <div
-        className="relative bg-white lg:rounded-2xl w-full lg:w-[49.5rem] h-fit shadow-2xl animate-showup lg:my-20"
+        className="relative bg-gray-light lg:rounded-2xl w-full lg:w-[49.5rem] h-fit shadow-2xl animate-showup lg:my-20"
       >
         <button
           aria-label="Close modal"
