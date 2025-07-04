@@ -20,7 +20,7 @@ interface CustomSelectProps {
 }
 
 const selectButtonVariants = tv({
-  base: "w-full min-h-10 px-6 bg-white border border-gray-300 text-gray-700 text-lg font-medium focus:outline-none transition-colors flex items-center justify-between",
+  base: "w-full h-[3.125rem] px-4 py-3 bg-white border border-gray-300 text-gray-700 text-lg font-medium focus:outline-none transition-colors flex items-center justify-between",
   variants: {
     borderColor: {
       green:
@@ -39,7 +39,7 @@ const selectButtonVariants = tv({
 })
 
 const selectDropdownVariants = tv({
-  base: "absolute top-full left-0 right-0 bg-white border border-t-0 rounded-b-lg shadow-lg z-50 overflow-hidden",
+  base: "absolute top-[3.125rem] left-0 right-0 bg-white border border-t-0 rounded-b-lg shadow-lg z-50 overflow-hidden",
   variants: {
     borderColor: {
       green: "border-[var(--color-green)]",
@@ -145,7 +145,7 @@ export default function CustomSelect({
 
       {isOpen && (
         <div className={selectDropdownVariants({ borderColor })}>
-          <ul role="listbox" className="py-1">
+          <ul role="listbox">
             {options.map((option, index) => (
               <li key={option.value}>
                 <button

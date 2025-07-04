@@ -8,8 +8,8 @@ const TransactionsCardLayout = ({
   return (
     <section
       className="flex flex-col relative
-        pb-[141px] 
-        rounded-lg 
+        pb-[141px]
+        rounded-lg overflow-hidden
         min-h-[633px] md:min-h-[629px] lg:min-h-100
         p-4 md:p-8 lg:p-8"
     >

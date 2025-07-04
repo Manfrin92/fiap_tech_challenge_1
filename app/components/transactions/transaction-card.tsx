@@ -17,7 +17,7 @@ const TransactionCard = () => {
 
   return (
     <TransactionsCardLayout>
-      <h5 className="font-bold text-white text-[25px] mb-6 text-center md:text-left lg:text-left">
+      <h5 className="font-bold text-white text-[25px] mb-6 text-center md:text-left">
         {title}
       </h5>
       <Image

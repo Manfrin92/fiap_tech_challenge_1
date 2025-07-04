@@ -8,6 +8,7 @@ import Avatar from '@/assets/icons/avatar.svg'
 import Close from '@/assets/icons/close.svg'
 import { accountData, headerData } from '@/data/global-data'
 import useStateController from '@/hooks/use-state-controller'
+import { useRouter } from 'next/router'
 
 interface Properties {
   closeMenu: () => void
@@ -24,6 +25,7 @@ const NavMenu: React.FC<Properties> = ({
   isProfileMenuActive,
   openProfileMenu,
 }) => {
+  const router = useRouter()
   const { firstName, lastName } = accountData
   const {
     loggedOutMenu,
@@ -95,8 +97,9 @@ const NavMenu: React.FC<Properties> = ({
                 <button
                   className='block w-full text-lg text-center text-white'
                   onClick={() => {
-                    closeMenu()
+                    closeProfileMenu()
                     setIsLoggedIn(false)
+                    router.push('/')
                   }}
                 >
                   {profileMenu[2].text}

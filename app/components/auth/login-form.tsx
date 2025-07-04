@@ -30,6 +30,7 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
         <Input
           label="Email"
           type="email"
+          id="email"
           placeholder="Digite seu email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -37,6 +38,7 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
         <Input
           label="Senha"
           type="password"
+          id="password"
           placeholder="Digite sua senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
