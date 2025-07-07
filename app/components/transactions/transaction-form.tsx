@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-import CustomSelect from '../select/Select';
-import Input from '../input/Input';
-import useLocalStorage from '@/hooks/use-local-storage';
-import { useTransaction } from '@/contexts/transaction-context';
+import CustomSelect from '../select/Select'
+import Input from '../input/Input'
+import useLocalStorage from '@/hooks/use-local-storage'
 
-import { Button } from '../button/Button';
-import { TransactionFormProps } from './types';
+import { Button } from '../button/Button'
+import { TransactionFormProps } from './types'
+import useStateController from '@/hooks/use-state-controller'
+import { formatDate } from '@/utils/date'
 
 interface IBankStatementItem {
   date: string
@@ -20,28 +21,28 @@ const TransactionForm = ({
   placeholderSelect,
 }: TransactionFormProps) => {
 
-  const { storedValue, setValue } = useLocalStorage<IBankStatementItem[]>('statement', []);
-  const { triggerRefresh } = useTransaction();
+  const { storedValue, setValue } = useLocalStorage<IBankStatementItem[]>('statement', [])
+  const { triggerRefresh } = useStateController()
 
-  const [selectedTransaction, setSelectedTransaction] = useState('');
-  const [amount, setAmount] = useState('');
-  
+  const [selectedTransaction, setSelectedTransaction] = useState('')
+  const [amount, setAmount] = useState('')
+
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const newTransaction = {
       type: selectedTransaction,
       amount: Number(amount),
-      date: new Date().toISOString().split('T')[0],
-    } as IBankStatementItem;
+      date: formatDate(new Date().toISOString()),
+    } as IBankStatementItem
 
-    setValue([...storedValue, newTransaction]);
-    
-    // Usa o context para notificar a atualização
-    triggerRefresh();
-    
-    setSelectedTransaction('');
-    setAmount('');
+    setValue([...storedValue, newTransaction])
+
+    // Use context for bank statement update
+    triggerRefresh()
+
+    setSelectedTransaction('')
+    setAmount('')
   }
 
   return (
@@ -52,10 +53,10 @@ const TransactionForm = ({
         borderColor="blue"
         options={transactionType}
         placeholder={placeholderSelect}
-        className="mb-8 max-w-[350px] h-10"
+        className="mb-8 max-w-[21.875rem] h-10"
         onValueChange={setSelectedTransaction}
       />
-      <div className='max-w-[144px] md:max-w-[250px] lg:max-w-[250px]'>
+      <div className='max-w-[9rem] md:max-w-[15.625rem]'>
         <Input
           placeholder={placeholderInput}
           className="border-[var(--color-green-dark)] mb-8 bg-white"
@@ -67,7 +68,7 @@ const TransactionForm = ({
           onChange={e => setAmount(e.target.value)}
         />
       </div>
-      <div className='max-w-[144px] md:max-w-[250px] lg:max-w-[250px]'>
+      <div className='max-w-[9rem] md:max-w-[15.625rem]'>
         <Button
           label="Concluir transação"
           onClick={() => {}}
@@ -79,7 +80,7 @@ const TransactionForm = ({
       </div>
 
     </form>
-  );
-};
+  )
+}
 
-export default TransactionForm;
+export default TransactionForm

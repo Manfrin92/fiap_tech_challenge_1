@@ -4,11 +4,10 @@ import DashboardHero from "@/components/dashboard-hero"
 import BankStatement from "@/components/bank-statement"
 import useStateController from "@/hooks/use-state-controller"
 import TransactionCard from "@/components/transactions"
-import { useTransaction } from "@/contexts/transaction-context"
 
 export default function TransfersPage() {
   const {authStatus} = useStateController()
-  const { refreshExtract } = useTransaction()
+  const { refreshExtract } = useStateController()
 
   return (
     <>

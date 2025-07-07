@@ -234,7 +234,7 @@ export const TransactionsData = {
     'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
 };
 
-// Transactions
+// INVESTMENTS
 
 export const InvestmentsData = {
   title: 'Investimentos',
