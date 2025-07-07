@@ -2,13 +2,17 @@ import Eye from '@/assets/icons/eye.svg'
 import { accountData } from '@/data/global-data'
 import { todayFormatted } from '@/utils/date'
 import ManWithMoney from '@/assets/images/man-w-money-ilustration.svg'
+import useLocalStorage from '@/hooks/use-local-storage'
+import { getBalanceByBankStatement } from '@/utils/bank-statement-calc'
 
 const DashboardHero = () => {
-  const {balance, firstName} = accountData
+  const { firstName } = accountData
+  const { getValue: storedBalance } = useLocalStorage('statement', [])
+  const calculatedBalance = getBalanceByBankStatement(storedBalance())
   const balanceFormatted = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(balance)
+  }).format(calculatedBalance)
 
   return (
     <section className="flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100 md:items-start md:flex-row sm:items-center xs:items-center overflow-hidden">
