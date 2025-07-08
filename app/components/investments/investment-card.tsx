@@ -5,10 +5,10 @@ import InvestmentRates from './investment-rates';
 import InvestmentChart from './investment-chart';
 import backgroundImg from '@/assets/images/transaction-desktop.png';
 import { InvestmentProps } from './types';
-import { InvestmentsData } from '@/data/global-data';
+import { investmentsData } from '@/data/global-data';
 
 const InvestmentCard = () => {
-  const { sectionTitle } = InvestmentsData as InvestmentProps;
+  const { sectionTitle } = investmentsData as InvestmentProps;
 
   return (
     <InvestmentCardLayout>

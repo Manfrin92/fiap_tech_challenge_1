@@ -1,8 +1,8 @@
 import React from 'react'
-import Input from '../input/Input'
 import { IAccount } from './account'
 import Cta from '../cta'
 import { useRouter } from 'next/router'
+import Input from '../input'
 
 const AccountForm: React.FC<IAccount> = ({
   cta,

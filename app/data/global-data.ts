@@ -216,7 +216,7 @@ export const loggedOutData = {
 
 // TRANSACTIONS
 
-export const TransactionsData = {
+export const transactionsData = {
   title: 'Nova transação',
   placeholderSelect: 'Selecione o tipo de transação',
   placeholderInput: '00.00',
@@ -236,7 +236,7 @@ export const TransactionsData = {
 
 // INVESTMENTS
 
-export const InvestmentsData = {
+export const investmentsData = {
   title: 'Investimentos',
   total: 50000,
   sectionTitle: 'Estatítiscas',
@@ -248,6 +248,38 @@ export const InvestmentsData = {
     {
       title: 'Renda Variável',
       price: 14000,
+    },
+  ],
+};
+
+// SERVICES
+
+export const servicesData = {
+  title: 'Confira os serviços  disponíveis',
+  cards: [
+    {
+      subtitle: 'Empréstimo',
+      type: 'loan',
+    },
+    {
+      subtitle: 'Meus cartões',
+      type: 'card',
+    },
+    {
+      subtitle: 'Doações',
+      type: 'donation',
+    },
+    {
+      subtitle: 'Pix',
+      type: 'pix',
+    },
+    {
+      subtitle: 'Seguros',
+      type: 'insurance',
+    },
+    {
+      subtitle: 'Crédito celular',
+      type: 'cellphone',
     },
   ],
 };

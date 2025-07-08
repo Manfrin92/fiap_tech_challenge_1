@@ -1,11 +1,11 @@
 import React from 'react'
 import { headerData, loggedOutData } from '@/data/global-data'
-import { IMenu } from '@/structure/header/header'
 
 import LoggedOutImage from '@/assets/images/logged-out-image.svg'
-import IconSelector from '../icon-selector'
 import Cta from '../cta'
 import useStateController from '@/hooks/use-state-controller'
+import { IMenu } from '@/layouts/structure/header/header'
+import IconSelector from './icon-selector'
 
 interface IFeature {
   icon: 'box' | 'money' | 'star' | 'devices'

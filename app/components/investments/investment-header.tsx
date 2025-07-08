@@ -1,9 +1,9 @@
-import { InvestmentsData } from '@/data/global-data';
+import { investmentsData } from '@/data/global-data';
 import { InvestmentProps } from './types';
 import { currencyFormatedToReal } from '@/utils/currency';
 
 const InvestmentHeader = () => {
-  const { title, total } = InvestmentsData as InvestmentProps;
+  const { title, total } = investmentsData as InvestmentProps;
 
   return (
     <>

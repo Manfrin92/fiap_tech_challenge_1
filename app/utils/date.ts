@@ -13,10 +13,6 @@ const monthList = [
   "Dezembro"
 ]
 
-const parseDecimal = (value: number) => {
-  return value < 10 ? `0${value}` : value
-}
-
 export const formatMonth = (date: Date | string) => {
   const d = new Date(date)
   const month = monthList[d.getMonth()]
@@ -26,11 +22,13 @@ export const formatMonth = (date: Date | string) => {
 
 export const formatDate = (date: Date | string) => {
   const d = new Date(date)
-  const day = d.getDate()
-  const month = d.getMonth()
-  const year = d.getFullYear()
+  const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).format(d)
 
-  return `${parseDecimal(day + 1)}/${parseDecimal(month + 1)}/${year}`
+  return formattedDate
 }
 
 const today = new Date()

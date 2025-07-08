@@ -1,6 +1,6 @@
 import TransactionsCardLayout from './transaction-card-layout';
 import TransactionForm from './transaction-form';
-import { TransactionsData } from '@/data/global-data';
+import { transactionsData } from '@/data/global-data';
 
 import Image from 'next/image';
 
@@ -11,7 +11,7 @@ import image3 from '@/assets/images/transaction-desktop.png';
 const TransactionCard = () => {
 
   const { title, transactionType, placeholderInput, placeholderSelect, imageAlt } =
-  TransactionsData;
+  transactionsData;
 
 
   return (
