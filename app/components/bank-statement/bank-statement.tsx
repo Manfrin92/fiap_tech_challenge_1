@@ -3,7 +3,8 @@ import useLocalStorage from '@/hooks/use-local-storage'
 import { formatDate, formatMonth } from '@/utils/date'
 import React, { useEffect, useState } from 'react'
 
-interface IBankStatementItem {
+// TODO: This should not be at the component level
+export interface IBankStatementItem {
   date: string
   amount: number
   type: 'deposit' | 'transfer'
