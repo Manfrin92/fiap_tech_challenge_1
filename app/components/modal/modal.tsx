@@ -9,10 +9,22 @@ const Modal = () => {
     setCurrentAuthModal,
     authModalStatus,
     setIsAuthModalOpen,
-    setIsLoggedIn
+    setIsLoggedIn,
+    createUserId
   } = useStateController()
 
   if (!authModalStatus) return null
+
+  const handleLogin = () => {
+    createUserId()
+    setIsLoggedIn(true)
+    setIsAuthModalOpen(false)
+  }
+
+  const handleRegister = () => {
+    createUserId()
+    setCurrentAuthModal('login')
+  }
 
   return (
     <div
@@ -31,10 +43,7 @@ const Modal = () => {
         <div className="px-6 py-8">
           {selectedModal === 'login' ? (
             <>
-              <LoginForm onSubmit={() => {
-                setIsLoggedIn(true)
-                setIsAuthModalOpen(false)
-              }} />
+              <LoginForm onSubmit={handleLogin} />
               <button
                 className="text-sm text-green underline"
                 onClick={() => {
@@ -46,7 +55,7 @@ const Modal = () => {
             </>
           ) : (
             <>
-              <RegisterForm onSubmit={() => setCurrentAuthModal('login')} />
+              <RegisterForm onSubmit={handleRegister} />
               <button className="text-sm text-green underline" onClick={() => setCurrentAuthModal('login') }>
                 Já tem conta? Faça login
               </button>

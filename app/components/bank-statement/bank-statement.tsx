@@ -1,7 +1,7 @@
 import { bankStatementData } from '@/data/global-data'
-import useLocalStorage from '@/hooks/use-local-storage'
 import { formatDate, formatMonth } from '@/utils/date'
 import React, { useEffect, useState } from 'react'
+import useStateController from '@/hooks/use-state-controller'
 
 // TODO: This should not be at the component level
 export interface IBankStatementItem {
@@ -16,14 +16,41 @@ export interface IBankStatement {
 }
 
 const BankStatement = () => {
-  const { title, transactions } = bankStatementData as IBankStatement
-  const { storedValue } = useLocalStorage('statement', transactions)
-  const [currentStatement, setCurrentStatement] = useState<IBankStatementItem[]>(storedValue)
+  const { title } = bankStatementData as IBankStatement
+  const [currentStatement, setCurrentStatement] = useState<IBankStatementItem[]>([])
+  const { userId } = useStateController()
+
+  // Limpar statement quando userId mudar
+  useEffect(() => {
+    setCurrentStatement([]);
+  }, [userId]);
 
   useEffect(() => {
-    setCurrentStatement(storedValue)
-  }, [storedValue])
+    if (userId) {
+      fetchStatment(userId);
+    }
+  }, [userId])
 
+  const fetchStatment = async(id: string) =>  {
+      try {
+        const data = await fetch(`https://bytebank-api-uh6h.onrender.com/transactions/${id}`);
+        
+        if (!data.ok) {
+          console.error('Error fetching transactions: HTTP', data.status);
+          setCurrentStatement([]);
+          return;
+        }
+        
+        const response = await data.json();
+        setCurrentStatement(response)
+        return response;
+
+      } catch(error) {
+        console.log('Error to fetch data', error)
+        // Se não conseguir fazer parse do JSON, usar array vazio
+        setCurrentStatement([])
+      }
+  }
   return (
     <section className='lg:col-span-3 rounded-lg bg-white px-6 py-8'>
       <h2 className='text-[1.5625rem] font-semibold'>{title}</h2>

@@ -1,48 +1,89 @@
-import { useState } from 'react'
+import {  useEffect, useState } from 'react'
 
 import CustomSelect from '../select/Select'
 import Input from '../input/Input'
-import useLocalStorage from '@/hooks/use-local-storage'
 
 import { Button } from '../button/Button'
 import { TransactionFormProps } from './types'
 import useStateController from '@/hooks/use-state-controller'
-import { formatDate } from '@/utils/date'
 
 interface IBankStatementItem {
   date: string
   amount: number
   type: 'deposit' | 'transfer'
+  userId: string
 }
 
 const TransactionForm = ({
-  transactionType,
   placeholderInput,
   placeholderSelect,
 }: TransactionFormProps) => {
 
-  const { storedValue, setValue } = useLocalStorage<IBankStatementItem[]>('statement', [])
-  const { triggerRefresh } = useStateController()
+  const { triggerRefresh, userId } = useStateController()
 
   const [selectedTransaction, setSelectedTransaction] = useState('')
-  const [amount, setAmount] = useState('')
+  const [amount, setAmount] = useState('');
+  const [transactionType, setTransactionType] = useState([]);
+  
+  const fetchTransactionOptions = async () => {
+    try {
+      const data = await fetch('https://bytebank-api-uh6h.onrender.com/transaction-types');
+      
+      if (!data.ok) {
+        console.error('Error fetching transaction types: HTTP', data.status);
+        return;
+      }
+      
+      const resp = await data.json();
+      setTransactionType(resp)
+      return resp;
+    } catch (error) {
+      console.error('Error fetching transaction types:', error);
+      setTransactionType([])
+    }
+  }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  
+  useEffect(() => {
+    fetchTransactionOptions();
+  },[])
+  
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
+   
+    
     const newTransaction = {
       type: selectedTransaction,
       amount: Number(amount),
-      date: formatDate(new Date().toISOString()),
+      userId: userId
     } as IBankStatementItem
 
-    setValue([...storedValue, newTransaction])
+      try {
+        const response = await fetch('https://bytebank-api-uh6h.onrender.com/transactions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newTransaction),
+        });
 
-    // Use context for bank statement update
+        if (!response.ok) {
+          let errorMessage = 'Erro ao salvar a transação';
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.message || errorMessage;
+          } catch (parseError) {
+            // Se não conseguir fazer parse do JSON de erro, usar mensagem padrão
+            console.error('Error parsing error response:', parseError);
+          }
+          throw new Error(errorMessage);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+
     triggerRefresh()
-
     setSelectedTransaction('')
-    setAmount('')
+    setAmount('') 
   }
 
   return (

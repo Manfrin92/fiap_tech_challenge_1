@@ -2,17 +2,15 @@ import Eye from '@/assets/icons/eye.svg'
 import { accountData } from '@/data/global-data'
 import { todayFormatted } from '@/utils/date'
 import ManWithMoney from '@/assets/images/man-w-money-ilustration.svg'
-import useLocalStorage from '@/hooks/use-local-storage'
-import { getBalanceByBankStatement } from '@/utils/bank-statement-calc'
+import useStateController from '@/hooks/use-state-controller'
 
 const DashboardHero = () => {
+  const { balance, isLoading } = useStateController()
   const { firstName } = accountData
-  const { getValue: storedBalance } = useLocalStorage('statement', [])
-  const calculatedBalance = getBalanceByBankStatement(storedBalance())
   const balanceFormatted = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(calculatedBalance)
+  }).format(balance)
 
   return (
     <section className="flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100 md:items-start md:flex-row sm:items-center xs:items-center overflow-hidden">
@@ -35,7 +33,7 @@ const DashboardHero = () => {
         />
         <span className="text-white text-base mt-4">Conta corrente</span>
         <span className="font-bold text-white text-3xl mt-2">
-          {balanceFormatted}
+          {isLoading ? 'Carregando...' : balanceFormatted}
         </span>
       </div>
       <ManWithMoney className="md:hidden text-[283px] mt-12" />
