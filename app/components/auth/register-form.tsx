@@ -4,6 +4,10 @@ import Input from "../input/Input";
 import { Button } from "../button/Button";
 import IlustracaoCriacaoLogin from "@/assets/images/IlustraçãoCriacaoLogin.svg";
 
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "@/config/firebaseConnection";
+
+
 interface RegisterFormProps {
   onSubmit: (data: { name: string; email: string; password: string }) => void;
 }
@@ -26,9 +30,28 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (name && email && password && agreedToTerms) {
-      onSubmit({ name, email, password });
+      await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log("cadastrado com sucesso", userCredential)
+        const user = userCredential.user;
+        onSubmit({ name, email, password });
+
+        return updateProfile(user, {
+          displayName: name
+        })
+   
+      })
+      .catch((error) => {
+        console.log("Erro ao cadastrar");
+        if (error.code === 'auth/weak-password') {
+          alert('Senha muito fraca')
+        } else if (error.code === 'auth/email-already-in-use') {
+          alert('Usuário já existe')
+        }
+      })
+
     } else if (!agreedToTerms) {
       alert("Você deve concordar com os termos para continuar.");
     }
@@ -49,6 +72,8 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
           placeholder="Digite seu nome completo"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          id="name"
+          maxLength={50}
         />
 
         <Input
@@ -61,6 +86,8 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
             setEmail(e.target.value);
             validateEmail(e.target.value);
           }}
+          id="email"
+          maxLength={200}
         />
 
         <Input
@@ -69,6 +96,8 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
           placeholder="Digite sua senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          id="password"
+          maxLength={50}
         />
 
         <div className="flex items-start gap-3 my-2">

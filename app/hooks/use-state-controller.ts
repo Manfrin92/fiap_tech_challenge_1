@@ -16,7 +16,9 @@ function useStateController() {
     updateBalance,
     isLoading,
     userId,
-    createUserId
+    createUserId, 
+    user,
+    setUser
   } = useContext(StateControllerContext)
 
   const authModalStatus = useMemo(() => isAuthModalOpen, [isAuthModalOpen])
@@ -36,7 +38,9 @@ function useStateController() {
     updateBalance,
     isLoading,
     userId,
-    createUserId
+    createUserId,
+    user,
+    setUser
   }
 }
 

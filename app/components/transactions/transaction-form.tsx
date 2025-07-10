@@ -1,4 +1,6 @@
 import {  useEffect, useState } from 'react'
+import { db } from '@/config/firebaseConnection'
+import { collection, addDoc } from 'firebase/firestore'
 
 import CustomSelect from '../select/Select'
 import Input from '../input/Input'
@@ -59,28 +61,37 @@ const TransactionForm = ({
       userId: userId
     } as IBankStatementItem
 
-      try {
-        const response = await fetch('https://bytebank-api-uh6h.onrender.com/transactions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newTransaction),
-        });
+      // try {
+      //   const response = await fetch('https://bytebank-api-uh6h.onrender.com/transactions', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify(newTransaction),
+      //   });
 
-        if (!response.ok) {
-          let errorMessage = 'Erro ao salvar a transação';
-          try {
-            const errorData = await response.json();
-            errorMessage = errorData.message || errorMessage;
-          } catch (parseError) {
-            // Se não conseguir fazer parse do JSON de erro, usar mensagem padrão
-            console.error('Error parsing error response:', parseError);
-          }
-          throw new Error(errorMessage);
-        }
-      } catch (error) {
-        console.error(error);
-      }
+      //   if (!response.ok) {
+      //     let errorMessage = 'Erro ao salvar a transação';
+      //     try {
+      //       const errorData = await response.json();
+      //       errorMessage = errorData.message || errorMessage;
+      //     } catch (parseError) {
+      //       // Se não conseguir fazer parse do JSON de erro, usar mensagem padrão
+      //       console.error('Error parsing error response:', parseError);
+      //     }
+      //     throw new Error(errorMessage);
+      //   }
+      // } catch (error) {
+      //   console.error(error);
+      // }
 
+      await addDoc(collection(db, "transaction"), {
+        newTransaction
+      })
+      .then(() => {
+        console.log('Dados salvos com sucesso')
+      })
+      .catch(() => {
+        console.log('Gerou error')
+      })
     triggerRefresh()
     setSelectedTransaction('')
     setAmount('') 

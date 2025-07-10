@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
+import type { User } from "firebase/auth";
 
 interface IStateControllerContext {
   isAuthModalOpen: boolean
@@ -14,6 +15,9 @@ interface IStateControllerContext {
   isLoading: boolean
   userId: string
   createUserId: () => void
+  user: User | null;
+  setUser: (user: User | null) => void;
+
 }
 
 const initialState: IStateControllerContext = {
@@ -30,6 +34,8 @@ const initialState: IStateControllerContext = {
   isLoading: false,
   userId: '',
   createUserId: () => {},
+  user: null,
+  setUser: () => {}
 }
 
 export const StateControllerContext =
@@ -43,6 +49,8 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
   const [balance, setBalance] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [userId, setUserId] = useState('')
+  const [user, setUser] = useState<User | null>(null);
+
 
   function getOrCreateUserId() {
     let storedUserId = localStorage.getItem('userId');
@@ -130,6 +138,8 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
         isLoading,
         userId,
         createUserId,
+        user,
+        setUser,
       }}
     >
       {children}

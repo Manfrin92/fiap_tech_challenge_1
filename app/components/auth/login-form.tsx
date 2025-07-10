@@ -4,6 +4,10 @@ import Input from "../input/Input";
 import { Button } from "../button/Button";
 import IlustracaoLogin from "@/assets/images/ilustracaoLogin.svg";
 
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from "@/config/firebaseConnection";
+import useStateController from "@/hooks/use-state-controller";
+
 interface LoginFormProps {
   onSubmit: (data: { email: string; password: string }) => void;
 }
@@ -12,9 +16,33 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
+  const { setUser } = useStateController();
+ 
+  console.log('API KEY:', process.env.NEXT_PUBLIC_FIREBASE_API_KEY);
+  console.log('API KEY:', process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN);
+
+  console.log('API KEY:', process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID);
+
+  console.log('API KEY:', process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET);
+
+  console.log('API KEY:', process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID);
+
+  console.log('API KEY:', process.env.NEXT_PUBLIC_FIREBASE_APP_ID);
+
+  const handleSubmit =  async () => {
     if (email && password) {
-      onSubmit({ email, password });
+
+      await signInWithEmailAndPassword(auth, email, password)
+      .then((userAuthenticated) => {
+        console.log('Usuário autenticado com sucesso!', userAuthenticated)
+
+        setUser(userAuthenticated.user)
+        onSubmit({ email, password });
+      })
+      .catch(() => {
+        console.log("Erro ao fazer login")
+      })
+
     }
   };
 
