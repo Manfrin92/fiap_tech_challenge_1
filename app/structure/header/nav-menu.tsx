@@ -10,6 +10,9 @@ import { accountData, headerData } from '@/data/global-data'
 import useStateController from '@/hooks/use-state-controller'
 import { useRouter } from 'next/router'
 
+import { signOut } from 'firebase/auth'
+import { auth } from '@/config/firebaseConnection'
+
 interface Properties {
   closeMenu: () => void
   closeProfileMenu: () => void
@@ -40,6 +43,13 @@ const NavMenu: React.FC<Properties> = ({
     setIsAuthModalOpen,
     setIsLoggedIn,
   } = useStateController()
+
+  const handleLogout = async () => {
+    await signOut(auth)
+    closeProfileMenu()
+    setIsLoggedIn(false)
+    router.push('/')
+  }
 
   return (
     <>
@@ -96,11 +106,7 @@ const NavMenu: React.FC<Properties> = ({
               <li className='py-4'>
                 <button
                   className='block w-full text-lg text-center text-white'
-                  onClick={() => {
-                    closeProfileMenu()
-                    setIsLoggedIn(false)
-                    router.push('/')
-                  }}
+                  onClick={handleLogout}
                 >
                   {profileMenu[2].text}
                 </button>
