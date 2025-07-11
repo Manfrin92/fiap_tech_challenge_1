@@ -7,6 +7,7 @@ import IlustracaoCriacaoLogin from "@/assets/images/IlustraçãoCriacaoLogin.svg
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/config/firebaseConnection";
 
+import { ToastContainer, toast } from 'react-toastify';
 
 interface RegisterFormProps {
   onSubmit: (data: { name: string; email: string; password: string }) => void;
@@ -34,7 +35,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
     if (name && email && password && agreedToTerms) {
       await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("cadastrado com sucesso", userCredential)
+        toast.success('Cadastrado com sucesso')
         const user = userCredential.user;
         onSubmit({ name, email, password });
 
@@ -44,11 +45,18 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
    
       })
       .catch((error) => {
-        console.log("Erro ao cadastrar");
         if (error.code === 'auth/weak-password') {
-          alert('Senha muito fraca')
+          toast.warning('Senha muito fraca', {
+            position: "bottom-right"
+          })
         } else if (error.code === 'auth/email-already-in-use') {
-          alert('Usuário já existe')
+          toast.warning("Usuário já existe. Por favor faça login!", {
+            position: "bottom-right"
+          })
+        } else {
+          toast.error('Error ao cadastrar. Por favor tente novamente', {
+            position: "bottom-right"
+          })
         }
       })
 
@@ -123,6 +131,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
           disabled={!agreedToTerms}
           centered
         />
+        <ToastContainer />
       </div>
     </AuthLayout>
   );

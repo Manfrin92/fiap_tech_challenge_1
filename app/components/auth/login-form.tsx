@@ -8,6 +8,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from "@/config/firebaseConnection";
 import useStateController from "@/hooks/use-state-controller";
 
+import { ToastContainer, toast } from 'react-toastify';
+
 interface LoginFormProps {
   onSubmit: (data: { email: string; password: string }) => void;
 }
@@ -23,13 +25,11 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
 
       await signInWithEmailAndPassword(auth, email, password)
       .then((userAuthenticated) => {
-        console.log('Usuário autenticado com sucesso!', userAuthenticated)
-
         setUser(userAuthenticated.user)
         onSubmit({ email, password });
       })
       .catch(() => {
-        console.log("Erro ao fazer login")
+        toast.error('Usuário ou senha inválidos!')
       })
 
     }
@@ -67,6 +67,7 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
           />
         </div>
         <Button label="Acessar" onClick={handleSubmit} centered />
+        <ToastContainer />
       </div>
     </AuthLayout>
   );

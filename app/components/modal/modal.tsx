@@ -1,5 +1,6 @@
 import useStateController from '@/hooks/use-state-controller'
 import { LoginForm, RegisterForm } from '../auth'
+import { useEffect } from 'react'
 
 import Close from '@/assets/icons/close.svg'
 
@@ -11,6 +12,19 @@ const Modal = () => {
     setIsAuthModalOpen,
     setIsLoggedIn
   } = useStateController()
+
+  useEffect(() => {
+    if (!authModalStatus) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsAuthModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [authModalStatus, setIsAuthModalOpen]);
 
   if (!authModalStatus) return null
 
