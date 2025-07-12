@@ -13,7 +13,8 @@ interface IBankStatementItem {
   date: string
   amount: number
   type: 'deposit' | 'transfer'
-  userId: string
+  userId: string,
+  createdAt: Date
 }
 
 const TransactionForm = ({
@@ -53,38 +54,16 @@ const TransactionForm = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-   
-    
+       
     const newTransaction = {
       type: selectedTransaction,
       amount: Number(amount),
+      createdAt: new Date(),
       userId: userId
     } as IBankStatementItem
 
-      // try {
-      //   const response = await fetch('https://bytebank-api-uh6h.onrender.com/transactions', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify(newTransaction),
-      //   });
-
-      //   if (!response.ok) {
-      //     let errorMessage = 'Erro ao salvar a transação';
-      //     try {
-      //       const errorData = await response.json();
-      //       errorMessage = errorData.message || errorMessage;
-      //     } catch (parseError) {
-      //       // Se não conseguir fazer parse do JSON de erro, usar mensagem padrão
-      //       console.error('Error parsing error response:', parseError);
-      //     }
-      //     throw new Error(errorMessage);
-      //   }
-      // } catch (error) {
-      //   console.error(error);
-      // }
-
-      await addDoc(collection(db, "transaction"), {
-        newTransaction
+      await addDoc(collection(db, "transactions"), {
+        ...newTransaction
       })
       .then(() => {
         console.log('Dados salvos com sucesso')
