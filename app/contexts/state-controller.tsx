@@ -17,6 +17,7 @@ interface IStateControllerContext {
   createUserId: () => void
   user: User | null;
   setUser: (user: User | null) => void;
+  setIsLoading: (value: boolean) => void
 
 }
 
@@ -35,7 +36,8 @@ const initialState: IStateControllerContext = {
   userId: '',
   createUserId: () => {},
   user: null,
-  setUser: () => {}
+  setUser: () => {},
+  setIsLoading: () => {}
 }
 
 export const StateControllerContext =
@@ -47,7 +49,7 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
   const [currentAuthModal, setCurrentAuthModal] = useState<'login' | 'subscribe'>(initialState.currentAuthModal)
   const [refreshExtract, setRefreshExtract] = useState<number>(initialState.refreshExtract)
   const [balance, setBalance] = useState(0)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [userId, setUserId] = useState('')
   const [user, setUser] = useState<User | null>(null);
 
@@ -136,6 +138,7 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
         balance,
         updateBalance,
         isLoading,
+        setIsLoading, // <-- adicionado
         userId,
         createUserId,
         user,

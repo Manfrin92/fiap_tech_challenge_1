@@ -2,10 +2,12 @@ import { useState } from "react";
 import { AuthLayout } from "./auth-layout";
 import Input from "../input/Input";
 import { Button } from "../button/Button";
+
 import IlustracaoLogin from "@/assets/images/ilustracaoLogin.svg";
 
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from "@/config/firebaseConnection";
+
 import useStateController from "@/hooks/use-state-controller";
 
 import { ToastContainer, toast } from 'react-toastify';
