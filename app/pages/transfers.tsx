@@ -4,11 +4,9 @@ import DashboardHero from "@/components/dashboard-hero"
 import BankStatement from "@/components/bank-statement"
 import TransactionCard from "@/components/transactions"
 import useRequireAuth from "@/hooks/use-require-auth"
-import useStateController from "@/hooks/use-state-controller"
 
 export default function TransfersPage() {
   const { isLoading, authStatus } = useRequireAuth()
-  const { refreshExtract } = useStateController()
 
   if (isLoading || !authStatus) return null
 
@@ -21,7 +19,7 @@ export default function TransfersPage() {
           <DashboardHero />
           <TransactionCard />
         </div>
-        <BankStatement key={refreshExtract} />
+        <BankStatement />
       </div>
     </>
   )

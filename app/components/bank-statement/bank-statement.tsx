@@ -18,7 +18,9 @@ export interface IBankStatement {
 const BankStatement = () => {
   const { title } = bankStatementData
   const [currentStatement, setCurrentStatement] = useState<IBankStatementItem[]>([])
-  const { userId } = useStateController()
+  const { user } = useStateController()
+
+  const userId = user?.uid;
 
   useEffect(() => {
     async function loadStatements() {
@@ -39,8 +41,6 @@ const BankStatement = () => {
               createdAt: dateString,
             });
           })
-
-          console.log("teste", list)
           setCurrentStatement(list);
         })
       }

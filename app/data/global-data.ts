@@ -3,8 +3,6 @@
 export const accountData = {
   title: 'Minha conta',
   nameLabel: 'Nome',
-  firstName: 'Joana',
-  lastName: 'da Silva Oliveira',
   emailLabel: 'Email',
   email: 'joanadasilvaoliveira@email.com.br',
   passLabel: 'Senha',

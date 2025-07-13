@@ -7,11 +7,13 @@ import useStateController from '@/hooks/use-state-controller'
 
 
 const DashboardHero = () => {
-  const { balance, isLoading, user } = useStateController()
-  const balanceFormatted = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(balance)
+  // const { isLoading, user } = useStateController()
+  const { user } = useStateController()
+
+  // const balanceFormatted = new Intl.NumberFormat('pt-BR', {
+  //   style: 'currency',
+  //   currency: 'BRL',
+  // }).format(balance)
 
   return (
     <section className="flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100 md:items-start md:flex-row sm:items-center xs:items-center overflow-hidden">
@@ -34,7 +36,7 @@ const DashboardHero = () => {
         />
         <span className="text-white text-base mt-4">Conta corrente</span>
         <span className="font-bold text-white text-3xl mt-2">
-          {isLoading ? 'Carregando...' : balanceFormatted}
+          {/* {isLoading ? 'Carregando...' : balanceFormatted} */}
         </span>
       </div>
       <ManWithMoney className="md:hidden text-[283px] mt-12" />

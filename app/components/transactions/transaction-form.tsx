@@ -22,7 +22,7 @@ const TransactionForm = ({
   placeholderSelect,
 }: TransactionFormProps) => {
 
-  const { triggerRefresh, userId } = useStateController()
+  const { user } = useStateController()
 
   const [selectedTransaction, setSelectedTransaction] = useState('')
   const [amount, setAmount] = useState('');
@@ -59,7 +59,7 @@ const TransactionForm = ({
       type: selectedTransaction,
       amount: Number(amount),
       createdAt: new Date(),
-      userId: userId
+      userId: user?.uid
     } as IBankStatementItem
 
       await addDoc(collection(db, "transactions"), {
@@ -71,7 +71,6 @@ const TransactionForm = ({
       .catch(() => {
         console.log('Gerou error')
       })
-    triggerRefresh()
     setSelectedTransaction('')
     setAmount('') 
   }

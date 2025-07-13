@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge'
 
 import Avatar from '@/assets/icons/avatar.svg'
 import Close from '@/assets/icons/close.svg'
-import { accountData, headerData } from '@/data/global-data'
+import { headerData } from '@/data/global-data'
 import useStateController from '@/hooks/use-state-controller'
 import { useRouter } from 'next/router'
 
@@ -29,7 +29,6 @@ const NavMenu: React.FC<Properties> = ({
   openProfileMenu,
 }) => {
   const router = useRouter()
-  const { firstName, lastName } = accountData
   const {
     loggedOutMenu,
     loggedInMenu,
@@ -42,6 +41,7 @@ const NavMenu: React.FC<Properties> = ({
     setCurrentAuthModal,
     setIsAuthModalOpen,
     setIsLoggedIn,
+    user,
   } = useStateController()
 
   const handleLogout = async () => {
@@ -56,7 +56,7 @@ const NavMenu: React.FC<Properties> = ({
       {authStatus ? (
         <>
           <div className='w-full flex items-center justify-end gap-4'>
-            <span className='hidden md:block'>{`${firstName} ${lastName}`}</span>
+            <span className='hidden md:block'>{`${user?.displayName}`}</span>
             <button onClick={openProfileMenu}>
               <Avatar className='w-10 h-10' />
             </button>
