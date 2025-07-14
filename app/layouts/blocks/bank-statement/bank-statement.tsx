@@ -1,19 +1,8 @@
 import { bankStatementData } from '@/data/global-data'
 import useLocalStorage from '@/hooks/use-local-storage'
-import { formatDate, formatMonth } from '@/utils/date'
+import { IBankStatement, IBankStatementItem } from '@/types/types'
+import { formatMonth } from '@/utils/date'
 import React, { useEffect, useState } from 'react'
-
-// TODO: This should not be at the component level
-export interface IBankStatementItem {
-  date: string
-  amount: number
-  type: 'deposit' | 'transfer'
-}
-
-export interface IBankStatement {
-  title: string
-  transactions: IBankStatementItem[]
-}
 
 const BankStatement = () => {
   const { title, transactions } = bankStatementData as IBankStatement
@@ -40,7 +29,7 @@ const BankStatement = () => {
               <p className='!leading-none'>
                 {transaction.type === 'deposit' ? 'Depósito' : 'Transferência'}
               </p>
-              <span className='text-xs text-[#8B8B8B]'>{formatDate(transaction.date)}</span>
+              <span className='text-xs text-[#8B8B8B]'>{transaction.date}</span>
             </div>
             <span className='font-semibold'>
               {`${transaction.type !== 'deposit' ? '-' : ''}R$ ${transaction.amount}`}

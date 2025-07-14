@@ -4,10 +4,10 @@ import useLocalStorage from '@/hooks/use-local-storage'
 
 import { TransactionFormProps } from './types'
 import useStateController from '@/hooks/use-state-controller'
-import { formatDate } from '@/utils/date'
-import CustomSelect from '../select'
-import Button from '../button'
-import Input from '../input'
+import { todayFormattedShort } from '@/utils/date'
+import CustomSelect from '@/components/select'
+import Input from '@/components/input'
+import Button from '@/components/button'
 
 interface IBankStatementItem {
   date: string
@@ -20,12 +20,11 @@ const TransactionForm = ({
   placeholderInput,
   placeholderSelect,
 }: TransactionFormProps) => {
-
   const { storedValue, setValue } = useLocalStorage<IBankStatementItem[]>('statement', [])
   const { triggerRefresh } = useStateController()
 
-  const [selectedTransaction, setSelectedTransaction] = useState('')
-  const [amount, setAmount] = useState('')
+  const [selectedTransaction, setSelectedTransaction] = useState<string>('')
+  const [amount, setAmount] = useState<string>('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -33,7 +32,7 @@ const TransactionForm = ({
     const newTransaction = {
       type: selectedTransaction,
       amount: Number(amount),
-      date: formatDate(new Date().toISOString()),
+      date: todayFormattedShort,
     } as IBankStatementItem
 
     setValue([...storedValue, newTransaction])

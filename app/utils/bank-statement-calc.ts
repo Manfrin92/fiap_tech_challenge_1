@@ -1,4 +1,4 @@
-import type { IBankStatementItem } from "@/components/bank-statement/bank-statement"
+import { IBankStatementItem } from "@/types/types"
 
 export function getBalanceByBankStatement(transactions: IBankStatementItem[]): number {
   let balance = 0

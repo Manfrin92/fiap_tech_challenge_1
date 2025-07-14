@@ -56,3 +56,14 @@ export interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
   id?: string
   labelStyle?:string
 }
+
+export interface IBankStatementItem {
+  date: string
+  amount: number
+  type: 'deposit' | 'transfer'
+}
+
+export interface IBankStatement {
+  title: string
+  transactions: IBankStatementItem[]
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import { headerData, loggedOutData } from '@/data/global-data'
 
 import LoggedOutImage from '@/assets/images/logged-out-image.svg'
-import Cta from '../cta'
+import Cta from '../../../components/cta'
 import useStateController from '@/hooks/use-state-controller'
 import { IMenu } from '@/layouts/structure/header/header'
 import IconSelector from './icon-selector'
