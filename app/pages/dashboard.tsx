@@ -1,8 +1,9 @@
-import AsideNav from "@/components/aside-nav"
-import DashboardHero from "@/components/dashboard-hero"
-import BankStatement from "@/components/bank-statement"
+
 import { NextSeo } from "next-seo"
 import useRequireAuth from "@/hooks/use-require-auth"
+import AsideNav from "@/layouts/blocks/aside-nav"
+import DashboardHero from "@/layouts/blocks/dashboard-hero"
+import BankStatement from "@/layouts/blocks/bank-statement"
 
 export default function Dashboard() {
   const { isLoading, authStatus } = useRequireAuth()

@@ -223,46 +223,6 @@ export const dashboardHeroData = {
   accountLabel: 'Conta corrente',
 }
 
-// TRANSACTIONS
-
-export const transactionsData = {
-  title: 'Nova transação',
-  placeholderSelect: 'Selecione o tipo de transação',
-  placeholderInput: '00.00',
-  transactionType: [
-    {
-      label: 'Depósito',
-      value: 'deposit',
-    },
-    {
-      label: 'DOC/TED',
-      value: 'transfer',
-    }
-  ],
-  imageAlt:
-    'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
-}
-
-// INVESTMENTS
-
-export const investmentsData = {
-  title: 'Investimentos',
-  total: 50000,
-  sectionTitle: 'Estatítiscas',
-  rates: [
-    {
-      title: 'Renda Fixa',
-      price: 36000,
-      id: 1, 
-    },
-    {
-      title: 'Renda Variável',
-      price: 14000,
-      id: 2,
-    },
-  ],
-}
-
 // SERVICES
 
 export const servicesData = {
@@ -294,3 +254,43 @@ export const servicesData = {
     },
   ],
 }
+
+// TRANSACTIONS
+
+export const transactionsData = {
+  title: 'Nova transação',
+  placeholderSelect: 'Selecione o tipo de transação',
+  placeholderInput: '00.00',
+  transactionType: [
+    {
+      label: 'Depósito',
+      value: 'deposit',
+    },
+    {
+      label: 'DOC/TED',
+      value: 'transfer',
+    }
+  ],
+  imageAlt:
+    'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
+};
+
+// INVESTMENTS
+
+export const investmentsData = {
+  title: 'Investimentos',
+  total: 50000,
+  sectionTitle: 'Estatítiscas',
+  rates: [
+    {
+      title: 'Renda Fixa',
+      price: 36000,
+      id: 1, 
+    },
+    {
+      title: 'Renda Variável',
+      price: 14000,
+      id: 2,
+    },
+  ],
+};
