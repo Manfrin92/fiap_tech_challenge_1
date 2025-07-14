@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import TransactionCard from './transaction-card';
 
-import { TransactionsData } from '@/data/global-data';
+import { transactionsData } from '@/data/global-data';
 
 const meta: Meta<typeof TransactionCard> = {
   title: 'components/Transaction-Card',
@@ -18,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof TransactionCard>;
 
-const {title, transactionType, placeholderInput, placeholderSelect, imageAlt} = TransactionsData;
+const {title, transactionType, placeholderInput, placeholderSelect, imageAlt} = transactionsData;
 
 export const Default: Story = {
 
@@ -30,4 +30,4 @@ export const Default: Story = {
     placeholderSelect,
     imageAlt,
   },
-}; 
+};
