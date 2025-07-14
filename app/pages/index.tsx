@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useRouter } from "next/router"
 import useStateController from "@/hooks/use-state-controller"
-import LoggedOutLayout from "@/components/logged-out-layout/logged-out-layout"
+import LoggedOutLayout from "@/layouts/blocks/logged-out-layout/logged-out-layout"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "@/config/firebaseConnection"
 import { NextSeo } from "next-seo"

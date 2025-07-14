@@ -12,7 +12,7 @@ export const accountData = {
     text: 'Salvar alterações',
     variant: 'orange',
   },
-};
+}
 
 // HEADER
 
@@ -76,7 +76,7 @@ export const headerData = {
       blank: false,
     },
   ],
-};
+}
 
 // FOOTER
 
@@ -135,7 +135,7 @@ export const footerData = {
       blank: true,
     },
   ],
-};
+}
 
 // BANK STATEMENT
 
@@ -143,27 +143,31 @@ export const bankStatementData = {
   title: 'Extrato',
   transactions: [
     {
-      date: '2025-06-18',
+      date: '18/06/2025',
+      month: 'Junho',
       amount: 150,
       type: 'deposit',
     },
     {
-      date: '2025-06-21',
+      date: '21/06/2025',
+      month: 'Junho',
       amount: 100,
       type: 'deposit',
     },
     {
-      date: '2025-06-21',
+      date: '21/06/2025',
+      month: 'Junho',
       amount: 50,
       type: 'deposit',
     },
     {
-      date: '2025-06-21',
+      date: '21/06/2025',
+      month: 'Junho',
       amount: 500,
       type: 'transfer',
     },
   ],
-};
+}
 
 // 404
 
@@ -176,7 +180,7 @@ export const notFoundData = {
     url: '/',
     blank: false,
   },
-};
+}
 
 // HOME LOGGED-OUT
 
@@ -210,11 +214,18 @@ export const loggedOutData = {
         'Seus dispositivos móveis (computador e laptop) protegidos por uma mensalidade simbólica.',
     },
   ],
-};
+}
+
+// DAHBOARD HERO
+
+export const dashboardHeroData = {
+  amountLabel: 'Saldo',
+  accountLabel: 'Conta corrente',
+}
 
 // TRANSACTIONS
 
-export const TransactionsData = {
+export const transactionsData = {
   title: 'Nova transação',
   placeholderSelect: 'Selecione o tipo de transação',
   placeholderInput: '00.00',
@@ -230,11 +241,11 @@ export const TransactionsData = {
   ],
   imageAlt:
     'Imagem de mulher com cartão de crédito. A mulher está segurando o cartão com a mão esquerda e está olhando para o lado direito. A imagem está em um fundo cinza.',
-};
+}
 
 // INVESTMENTS
 
-export const InvestmentsData = {
+export const investmentsData = {
   title: 'Investimentos',
   total: 50000,
   sectionTitle: 'Estatítiscas',
@@ -250,4 +261,36 @@ export const InvestmentsData = {
       id: 2,
     },
   ],
-};
+}
+
+// SERVICES
+
+export const servicesData = {
+  title: 'Confira os serviços  disponíveis',
+  cards: [
+    {
+      subtitle: 'Empréstimo',
+      type: 'loan',
+    },
+    {
+      subtitle: 'Meus cartões',
+      type: 'card',
+    },
+    {
+      subtitle: 'Doações',
+      type: 'donation',
+    },
+    {
+      subtitle: 'Pix',
+      type: 'pix',
+    },
+    {
+      subtitle: 'Seguros',
+      type: 'insurance',
+    },
+    {
+      subtitle: 'Crédito celular',
+      type: 'cellphone',
+    },
+  ],
+}

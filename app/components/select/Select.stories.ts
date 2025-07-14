@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 
-import Select from './Select';
+import Select from './select'
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',
   component: Select,
   tags: ['autodocs'],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof meta>; 
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
@@ -21,7 +21,7 @@ export const Default: Story = {
     placeholder: 'Selecione uma opção',
     borderColor: 'blue',
   },
-};
+}
 
 export const WithDefaultValue: Story = {
   args: {
@@ -34,7 +34,7 @@ export const WithDefaultValue: Story = {
     placeholder: 'Escolha uma letra',
     borderColor: 'green',
   },
-};
+}
 
 export const CustomBorderColor: Story = {
   args: {
@@ -46,4 +46,4 @@ export const CustomBorderColor: Story = {
     placeholder: 'Cor favorita',
     borderColor: 'blue',
   },
-};
+}

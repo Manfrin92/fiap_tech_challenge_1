@@ -2,15 +2,14 @@ import {  useState } from 'react'
 import { db } from '@/config/firebaseConnection'
 import { collection, addDoc } from 'firebase/firestore'
 
-import CustomSelect from '../select/Select'
-import Input from '../input/Input'
-
-import { Button } from '../button/Button'
 import { TransactionFormProps } from './types'
 import useStateController from '@/hooks/use-state-controller'
 
-import { TransactionsData } from '@/data/global-data'
+import { transactionsData } from '@/data/global-data'
 import { toast } from 'react-toastify'
+import Input from '@/components/input'
+import Button from '@/components/button'
+import CustomSelect from '@/components/select'
 
 interface IBankStatementItem {
   date: string
@@ -59,7 +58,7 @@ const TransactionForm = ({
     >
       <CustomSelect
         borderColor="blue"
-        options={TransactionsData?.transactionType}
+        options={transactionsData?.transactionType}
         placeholder={placeholderSelect}
         className="mb-8 max-w-[21.875rem] h-10"
         onValueChange={setSelectedTransaction}

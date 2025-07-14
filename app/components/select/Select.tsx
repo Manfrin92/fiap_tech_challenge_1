@@ -1,23 +1,10 @@
 "use client"
 
+import { ICustomSelect } from "@/types/types"
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
-import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropdown } from "react-icons/io"
 import { tv } from "tailwind-variants"
-
-interface Option {
-  value: string
-  label: string
-}
-
-interface CustomSelectProps {
-  options: Option[]
-  placeholder?: string
-  onValueChange?: (value: string) => void
-  defaultValue?: string
-  className?: string
-  borderColor?: "blue" | "green"
-}
 
 const selectButtonVariants = tv({
   base: "w-full h-[3.125rem] px-4 py-3 bg-white border border-gray-300 text-gray-700 text-lg font-medium focus:outline-none transition-colors flex items-center justify-between",
@@ -87,14 +74,14 @@ const selectOptionVariants = tv({
   },
 })
 
-export default function CustomSelect({
+const CustomSelect = ({
   options,
   placeholder = "Selecione uma opção",
   onValueChange,
   defaultValue,
   className = "",
   borderColor = "blue",
-}: CustomSelectProps) {
+}: ICustomSelect) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedValue, setSelectedValue] = useState(defaultValue || "")
   const selectRef = useRef<HTMLDivElement>(null)
@@ -176,3 +163,5 @@ export default function CustomSelect({
     </div>
   )
 }
+
+export default CustomSelect

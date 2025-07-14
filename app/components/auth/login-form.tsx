@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { AuthLayout } from "./auth-layout";
-import Input from "../input/Input";
-import { Button } from "../button/Button";
-
-import IlustracaoLogin from "@/assets/images/ilustracaoLogin.svg";
+import { useState } from "react"
+import { AuthLayout } from "./auth-layout"
+import IlustracaoLogin from "@/assets/images/ilustracaoLogin.svg"
+import Button from "../button"
+import Input from "../input"
 
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from "@/config/firebaseConnection";
@@ -13,12 +12,12 @@ import useStateController from "@/hooks/use-state-controller";
 import { ToastContainer, toast } from 'react-toastify';
 
 interface LoginFormProps {
-  onSubmit: (data: { email: string; password: string }) => void;
+  onSubmit: (data: { email: string; password: string }) => void
 }
 
 export function LoginForm({ onSubmit }: LoginFormProps) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   const { setUser } = useStateController();
  
@@ -35,7 +34,7 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
       })
 
     }
-  };
+  }
 
   return (
     <AuthLayout
@@ -72,5 +71,5 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
         <ToastContainer />
       </div>
     </AuthLayout>
-  );
+  )
 }

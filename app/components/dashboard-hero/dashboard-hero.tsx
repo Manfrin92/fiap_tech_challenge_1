@@ -1,5 +1,5 @@
 import Eye from '@/assets/icons/eye.svg'
-import { todayFormatted } from '@/utils/date'
+import { getCurrentDate } from '@/utils/date'
 import ManWithMoney from '@/assets/images/man-w-money-ilustration.svg'
 import useStateController from '@/hooks/use-state-controller'
 
@@ -23,7 +23,7 @@ const DashboardHero = () => {
     <section className="flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100 md:items-start md:flex-row sm:items-center xs:items-center overflow-hidden">
       <div className='flex-1'>
         <h5 className="font-bold text-white text-2xl mb-6">Olá, {user?.displayName}! :)</h5>
-        <span className="text-white text-sm">{todayFormatted}</span>
+        <span className="text-white text-sm">{getCurrentDate}</span>
         <ManWithMoney className="md:block lg:hidden xs:hidden text-[283px] mt-12" />
       </div>
       <div className="flex flex-col mt-24 ">

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { bankStatementData } from '@/data/global-data'
 import { formatDate, formatMonth } from '@/utils/date'
 import React from 'react'

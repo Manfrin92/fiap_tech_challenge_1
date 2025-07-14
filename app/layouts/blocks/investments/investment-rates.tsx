@@ -1,10 +1,10 @@
 import RateCard from './investment-rate-card';
-import { InvestmentsData } from '@/data/global-data';
+import { investmentsData } from '@/data/global-data';
 import { InvestmentProps } from './types';
 import { currencyFormatedToReal } from '@/utils/currency';
 
 const InvestmentRates = () => {
-  const { rates } = InvestmentsData as InvestmentProps;
+  const { rates } = investmentsData as InvestmentProps;
 
   return (
     <div className="flex gap-6 flex-col md:flex-row">

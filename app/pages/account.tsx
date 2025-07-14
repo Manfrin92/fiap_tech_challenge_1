@@ -1,6 +1,6 @@
-import AsideNav from "@/components/aside-nav"
+import AsideNav from "@/layouts/blocks/aside-nav"
 import { NextSeo } from "next-seo"
-import Account from "@/components/account"
+import Account from "@/layouts/blocks/account"
 import useRequireAuth from "@/hooks/use-require-auth"
 
 export default function AccountPage() {

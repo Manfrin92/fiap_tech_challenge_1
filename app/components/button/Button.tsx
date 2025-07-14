@@ -1,17 +1,7 @@
-import React from "react";
+import { IButton } from "@/types/types"
+import React from "react"
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  primary?: boolean;
-  size?: 'small' | 'medium' | 'large';
-  label: string;
-  onClick?: () => void;
-  backgroundColor?: string;
-  variant?: 'primary' | 'secondary' | 'link';
-  fullWidth?: boolean;
-  centered?: boolean;
-}
-
-export const Button = ({
+const Button = ({
   size = 'medium',
   label,
   onClick,
@@ -22,17 +12,17 @@ export const Button = ({
   disabled,
   className,
   ...props
-}: ButtonProps) => {
+}: IButton) => {
   const baseClasses = `
     font-medium rounded-lg transition-all
     focus:outline-none focus:ring-2 focus:ring-offset-2
-  `;
+  `
 
   const sizeClasses = {
     small: 'text-sm px-3 py-2',
     medium: 'text-sm px-6 py-3 h-[48px]',
     large: 'text-lg px-6 py-4',
-  }[size];
+  }[size]
 
   const variantClasses = {
     primary: `bg-[var(--color-green)] text-white hover:brightness-110 ${
@@ -40,10 +30,10 @@ export const Button = ({
     }`,
     secondary: `bg-[var(--color-secondary)] text-[var(--color-primary)] hover:bg-[var(--color-green-light)] focus:ring-[var(--color-secondary)]`,
     link: `text-[var(--color-green)] underline bg-transparent border-none hover:text-green-700 transition-colors cursor-pointer`
-  }[variant];
+  }[variant]
 
-  const widthClasses = fullWidth ? 'w-full' : 'w-fit';
-  const alignClasses = centered ? 'mx-auto block' : '';
+  const widthClasses = fullWidth ? 'w-full' : 'w-fit'
+  const alignClasses = centered ? 'mx-auto block' : ''
 
   return (
     <button
@@ -56,5 +46,7 @@ export const Button = ({
     >
       {label}
     </button>
-  );
-};
+  )
+}
+
+export default Button
