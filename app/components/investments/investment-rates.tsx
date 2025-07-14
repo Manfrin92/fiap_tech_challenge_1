@@ -10,7 +10,7 @@ const InvestmentRates = () => {
     <div className="flex gap-6 flex-col md:flex-row">
       {rates &&
         rates.map((rate) => (
-          <RateCard>
+          <RateCard key={rate.id}>
             <p className="text-1">{rate.title}</p>
             <p className="text-2">R$ {currencyFormatedToReal(rate.price)}</p>
           </RateCard>

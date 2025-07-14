@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { db } from '@/config/firebaseConnection'
 import { collection, addDoc } from 'firebase/firestore'
 
@@ -8,6 +8,8 @@ import Input from '../input/Input'
 import { Button } from '../button/Button'
 import { TransactionFormProps } from './types'
 import useStateController from '@/hooks/use-state-controller'
+
+import { TransactionsData } from '@/data/global-data'
 
 interface IBankStatementItem {
   date: string
@@ -26,32 +28,7 @@ const TransactionForm = ({
 
   const [selectedTransaction, setSelectedTransaction] = useState('')
   const [amount, setAmount] = useState('');
-  const [transactionType, setTransactionType] = useState([]);
   
-  const fetchTransactionOptions = async () => {
-    try {
-      const data = await fetch('https://bytebank-api-uh6h.onrender.com/transaction-types');
-      
-      if (!data.ok) {
-        console.error('Error fetching transaction types: HTTP', data.status);
-        return;
-      }
-      
-      const resp = await data.json();
-      setTransactionType(resp)
-      return resp;
-    } catch (error) {
-      console.error('Error fetching transaction types:', error);
-      setTransactionType([])
-    }
-  }
-
-  
-  useEffect(() => {
-    fetchTransactionOptions();
-  },[])
-  
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
        
@@ -81,7 +58,7 @@ const TransactionForm = ({
     >
       <CustomSelect
         borderColor="blue"
-        options={transactionType}
+        options={TransactionsData?.transactionType}
         placeholder={placeholderSelect}
         className="mb-8 max-w-[21.875rem] h-10"
         onValueChange={setSelectedTransaction}

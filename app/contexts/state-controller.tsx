@@ -1,5 +1,7 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import type { User } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/config/firebaseConnection";
 
 interface IStateControllerContext {
   isAuthModalOpen: boolean
@@ -36,6 +38,14 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
   const [currentAuthModal, setCurrentAuthModal] = useState<'login' | 'subscribe'>(initialState.currentAuthModal)
   const [isLoading, setIsLoading] = useState(true)
   const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);           // Atualiza o contexto com o user do Firebase
+      setIsLoggedIn(!!firebaseUser);   // Atualiza o status de login
+    });
+    return () => unsubscribe();
+  }, []);
 
 
   return (

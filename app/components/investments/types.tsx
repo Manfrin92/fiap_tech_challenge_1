@@ -1,6 +1,7 @@
 interface Rate {
   title: string;
   price: number;
+  id: number;
 }
 
 export interface InvestmentProps {

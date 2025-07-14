@@ -242,10 +242,12 @@ export const InvestmentsData = {
     {
       title: 'Renda Fixa',
       price: 36000,
+      id: 1, 
     },
     {
       title: 'Renda Variável',
       price: 14000,
+      id: 2,
     },
   ],
 };

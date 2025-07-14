@@ -23,7 +23,7 @@ const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false)
   const [isProfileMenuActive, setIsProfileMenuActive] = useState<boolean>(false)
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
-  const {authStatus} = useStateController()
+  const { authStatus } = useStateController()
 
   const closeMenu = useCallback(() => {
     setIsMenuActive(false)
