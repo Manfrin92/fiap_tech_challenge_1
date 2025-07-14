@@ -4,16 +4,11 @@ import useLocalStorage from '@/hooks/use-local-storage'
 
 import { TransactionFormProps } from './types'
 import useStateController from '@/hooks/use-state-controller'
-import { todayFormattedShort } from '@/utils/date'
+import { getCurrentMonth, getCurrentDateShort } from '@/utils/date'
 import CustomSelect from '@/components/select'
 import Input from '@/components/input'
 import Button from '@/components/button'
-
-interface IBankStatementItem {
-  date: string
-  amount: number
-  type: 'deposit' | 'transfer'
-}
+import { IBankStatementItem } from '@/types/types'
 
 const TransactionForm = ({
   transactionType,
@@ -31,8 +26,9 @@ const TransactionForm = ({
 
     const newTransaction = {
       type: selectedTransaction,
+      month: getCurrentMonth.replace(/^./, (str) => str.toUpperCase()),
       amount: Number(amount),
-      date: todayFormattedShort,
+      date: getCurrentDateShort,
     } as IBankStatementItem
 
     setValue([...storedValue, newTransaction])

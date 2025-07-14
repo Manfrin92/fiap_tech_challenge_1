@@ -3,6 +3,7 @@ import TransactionForm from './transaction-form'
 import { transactionsData } from '@/data/global-data'
 
 import Graphism from '@/assets/images/graphism-blue.svg'
+import BgImage from '@/assets/images/transaction-image.svg'
 
 const TransactionCard = () => {
 
@@ -26,6 +27,7 @@ const TransactionCard = () => {
         placeholderInput={placeholderInput}
         placeholderSelect={placeholderSelect}
       />
+      <BgImage className='absolute bottom-6 right-6 w-[17.5rem] md:w-[20.625rem] h-auto md:h-[14.375rem] lg:hidden' />
     </TransactionsCardLayout>
   )
 }

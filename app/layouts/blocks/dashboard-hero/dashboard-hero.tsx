@@ -1,12 +1,13 @@
 import Eye from '@/assets/icons/eye.svg'
-import { accountData, dashboardHeroData } from '@/data/global-data'
-import { todayFormatted } from '@/utils/date'
+import { accountData, bankStatementData, dashboardHeroData } from '@/data/global-data'
+import { getCurrentDate } from '@/utils/date'
 import ManWithMoney from '@/assets/images/man-w-money-ilustration.svg'
 import useLocalStorage from '@/hooks/use-local-storage'
 import { getBalanceByBankStatement } from '@/utils/bank-statement-calc'
 import Graphism from '@/assets/images/graphism.svg'
 import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { IBankStatement } from '@/types/types'
 
 interface IDashboardHero {
   amountLabel: string
@@ -15,14 +16,20 @@ interface IDashboardHero {
 
 const DashboardHero = () => {
   const { firstName } = accountData
-  const {accountLabel, amountLabel} = dashboardHeroData as IDashboardHero
+  const { accountLabel, amountLabel } = dashboardHeroData as IDashboardHero
+  const { transactions } = bankStatementData as IBankStatement
   const [isAmountVisible, setIsAmountVisible] = useState<boolean>(true)
-  const { getValue: storedBalance } = useLocalStorage('statement', [])
+  const { getValue: storedBalance } = useLocalStorage('statement', transactions)
   const calculatedBalance = getBalanceByBankStatement(storedBalance())
+
   const balanceFormatted = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
   }).format(calculatedBalance)
+
+  // useEffect(() => {
+  //   getValue()
+  // }, [storedBalance])
 
   return (
     <section className="relative flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100 md:items-start md:flex-row sm:items-center xs:items-center overflow-hidden">
@@ -30,7 +37,7 @@ const DashboardHero = () => {
       <Graphism className='lg:hidden absolute top-0 right-0 w-[9rem] md:w-[11.25rem] h-auto rotate-180' />
       <div className='flex-1'>
         <h2 className="font-bold text-white text-2xl mb-6">{`Olá, ${firstName}! :)`}</h2>
-        <span className="text-white text-sm">{todayFormatted}</span>
+        <span className="text-white text-sm">{getCurrentDate}</span>
         <ManWithMoney className="hidden md:block lg:hidden w-[17.6875rem] h-auto mt-12" />
       </div>
       <div className="flex flex-col mt-10 lg:mt-24 min-w-[11.375rem]">

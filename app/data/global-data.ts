@@ -146,21 +146,25 @@ export const bankStatementData = {
   transactions: [
     {
       date: '18/06/2025',
+      month: 'Julho',
       amount: 150,
       type: 'deposit',
     },
     {
       date: '21/06/2025',
+      month: 'Julho',
       amount: 100,
       type: 'deposit',
     },
     {
       date: '21/06/2025',
+      month: 'Julho',
       amount: 50,
       type: 'deposit',
     },
     {
       date: '21/06/2025',
+      month: 'Julho',
       amount: 500,
       type: 'transfer',
     },
