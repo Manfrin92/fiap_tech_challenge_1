@@ -2,6 +2,9 @@ import React, { createContext, useState, useEffect } from 'react'
 import type { User } from "firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/config/firebaseConnection";
+import { IBankStatementItem } from '@/components/bank-statement/bank-statement';
+import { collection, query, orderBy, onSnapshot, where } from "firebase/firestore";
+import { db } from "@/config/firebaseConnection";
 
 interface IStateControllerContext {
   isAuthModalOpen: boolean
@@ -14,6 +17,8 @@ interface IStateControllerContext {
   setIsLoading: (value: boolean) => void
   user: User | null;
   setUser: (user: User | null) => void;
+  bankStatement: IBankStatementItem[];
+  setBankStatement: (items: IBankStatementItem[]) => void;
 }
 
 const initialState: IStateControllerContext = {
@@ -26,7 +31,9 @@ const initialState: IStateControllerContext = {
   isLoading: false,
   setIsLoading: () => {},
   user: null,
-  setUser: () => {}
+  setUser: () => {}, 
+  bankStatement: [],
+  setBankStatement: () => {},
 }
 
 export const StateControllerContext =
@@ -38,6 +45,7 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
   const [currentAuthModal, setCurrentAuthModal] = useState<'login' | 'subscribe'>(initialState.currentAuthModal)
   const [isLoading, setIsLoading] = useState(true)
   const [user, setUser] = useState<User | null>(null);
+  const [bankStatement, setBankStatement] = useState<IBankStatementItem[]>([]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
@@ -46,6 +54,29 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
     });
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (!user?.uid) return;
+    setIsLoading(true)
+    const statementRef = collection(db, "transactions");
+    const q = query(statementRef, orderBy("createdAt", "desc"), where("userId", "==", user.uid));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const list: IBankStatementItem[] = [];
+      snapshot.forEach((doc) => {
+        const timestamp = doc.data().createdAt;
+        const date = timestamp.toDate();
+        const dateString = date.toISOString();
+        list.push({
+          type: doc.data().type,
+          amount: doc.data().amount,
+          createdAt: dateString,
+        });
+      });
+      setBankStatement(list);
+      setIsLoading(false)
+    });
+    return () => unsubscribe();
+  }, [user?.uid, setIsLoading, setBankStatement]);
 
 
   return (
@@ -61,6 +92,8 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
         setIsLoading,
         user,
         setUser,
+        bankStatement,
+        setBankStatement,
       }}
     >
       {children}
@@ -69,3 +102,5 @@ const StateControllerProvider = ({ children }: React.PropsWithChildren) => {
 }
 
 export default StateControllerProvider
+
+

@@ -10,6 +10,7 @@ import { TransactionFormProps } from './types'
 import useStateController from '@/hooks/use-state-controller'
 
 import { TransactionsData } from '@/data/global-data'
+import { toast } from 'react-toastify'
 
 interface IBankStatementItem {
   date: string
@@ -43,10 +44,10 @@ const TransactionForm = ({
         ...newTransaction
       })
       .then(() => {
-        console.log('Dados salvos com sucesso')
+       toast.success('Dados salvos com sucesso')
       })
       .catch(() => {
-        console.log('Gerou error')
+        toast.error('Gerou error')
       })
     setSelectedTransaction('')
     setAmount('') 
