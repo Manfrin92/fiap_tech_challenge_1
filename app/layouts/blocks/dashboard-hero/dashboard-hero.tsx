@@ -27,10 +27,6 @@ const DashboardHero = () => {
     currency: 'BRL',
   }).format(calculatedBalance)
 
-  // useEffect(() => {
-  //   getValue()
-  // }, [storedBalance])
-
   return (
     <section className="relative flex flex-col bg-primary p-8 pb-7 pr-30 rounded-lg min-h-100 md:items-start md:flex-row sm:items-center xs:items-center overflow-hidden">
       <Graphism className='lg:hidden absolute bottom-0 left-0 w-[9rem] md:w-[11.25rem] h-auto' />
